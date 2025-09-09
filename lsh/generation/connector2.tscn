@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2iqyjxrrjck"]
+
+[ext_resource type="Script" uid="uid://cat603757p06w" path="res://generation/connector.gd" id="1_2qxp6"]
+
+[node name="connector" type="Node2D"]
+script = ExtResource("1_2qxp6")
+
+[node name="Marker2D" type="Marker2D" parent="."]

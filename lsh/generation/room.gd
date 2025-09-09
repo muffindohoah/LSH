@@ -1,6 +1,11 @@
+@tool
+
 extends Node2D
+class_name Room
 
 var connectors
+@onready var bounding_collision = $Bounds
+@onready var connector_holder = $Connectors
 var bounds:Vector2
 var bounds_offset:Vector2
 
@@ -13,9 +18,9 @@ func _ready() -> void:
 func update_preview(new_value):
 	update_data = false
 	connectors = []
-	bounds = $Bounds.shape.size
-	bounds_offset = $Bounds.position
-	for child in $Connectors.get_children():
+	bounds = bounding_collision.shape.size
+	bounds_offset = bounding_collision.position
+	for child in connector_holder.get_children():
 		if child.is_in_group("connector"):
 			connectors.append(child)
 
