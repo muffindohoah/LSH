@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cankcva6sody6"]
+
+[ext_resource type="Script" uid="uid://dnq7d2kcib4os" path="res://generation/gen.gd" id="1_tncbi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tncbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tncbi"]
+radius = 6.08276
+
+[node name="gentest" type="Node2D"]
+script = ExtResource("1_tncbi")
+dungeon_length = 10
+sidequest_length = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.935, 1.935)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+top_level = true
+collision_layer = 128
+collision_mask = 128
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_tncbi")
+debug_color = Color(0, 0.64702, 0.222318, 0.42)
+
+[node name="Marker2D" type="Marker2D" parent="Area2D"]
+top_level = true
+z_index = 6
+skew = -0.944223
+gizmo_extents = 19.5
+
+[node name="Debug" type="CollisionShape2D" parent="."]
+top_level = true
+shape = SubResource("CircleShape2D_tncbi")
+debug_color = Color(0.995176, 0, 0.2098, 0.42)
+
+[node name="Label2" type="Label" parent="Debug"]
+offset_top = -6.0
+offset_right = 40.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 10
+text = "1"
+
+[node name="Debug2" type="CollisionShape2D" parent="."]
+top_level = true
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_tncbi")
+debug_color = Color(0.948896, 0.539941, 0, 0.419608)
+
+[node name="Label" type="Label" parent="Debug2"]
+offset_top = -6.0
+offset_right = 40.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 10
+text = "2"
+
+[node name="Debug3" type="CollisionShape2D" parent="."]
+top_level = true
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_tncbi")
+debug_color = Color(0.408094, 0.606961, 3.85046e-07, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -292.0
+offset_top = -162.0
+offset_right = -252.0
+offset_bottom = -139.0
+text = "SEED"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

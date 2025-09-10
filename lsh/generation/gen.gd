@@ -1,71 +1,216 @@
 extends Node2D
 
-@export var dungeon_length:int = 3
+@onready var room_scenes = []#this will automatially append from */rooms
+@onready var completed_rooms = []
+@onready var roomcoll_area = $Area2D
 
-var room_library
+@export var dungeon_length = 3
+
+@export_category("Sidequests")
+@export var sidequest_length = 3
+@export var sidequest:SideQuest
+
+var last_generated_room = null
 
 func _ready() -> void:
 	randomize()
-	room_library = dir_contents("res://generation/rooms/")
-	generate_dungeon()
+	var random_seed = randi()
+	$Label.text = "Seed: " + str(random_seed)
+	seed(random_seed)
+	
+	if sidequest:
+		sidequest_length = sidequest.quest_length
+	
+	room_scenes = dir_contents("res://generation/rooms/")
+	room_scenes.shuffle()
+	generate()
 
-var last_generated_room
 
-func generate_dungeon():
-	for i in dungeon_length:
-		append_room_to()
+func generate():
+	
+	#this will create the main snake
+	for i in range(dungeon_length):
+		await append_room_to(last_generated_room)
+	
+	#this will create the 'sidequest'
+	if sidequest_length > 0:
+		print("questing...")
+		
+		#shuffle, then pick a random room to start branching path.
+		var sidequest_branch_room = completed_rooms.duplicate_deep()
+		sidequest_branch_room.shuffle()
+		sidequest_branch_room = sidequest_branch_room[0]
+		
+		#make certain sidequest_branch_room is the last_generated_room, branch/bloom
+		await append_room_to(sidequest_branch_room)
+		for i in range(sidequest_length-1):
+			await append_room_to(last_generated_room)
+		
+		#if sidequest is set correctly, spawn corresponding room.
+		if sidequest:
+			await append_room_to(last_generated_room, sidequest.quest_room)
+	
+	print("that's a wrap.")
 
-func append_room_to(room_arg = null):
-	var room
-	if room:
-		pass
-	elif !room:
-		room_library.shuffle()
-		room = room_library[0]
-	room = room.instantiate()
-	room.update_preview(true)
-	if last_generated_room:
-		print(last_generated_room, are_rooms_compatible(last_generated_room, room))
-		if are_rooms_compatible(last_generated_room, room):
-			room.global_position = last_generated_room.global_position
-			room.realign_to()
-			add_child(room)
-			last_generated_room = room
+
+func append_room_to(room = null, rscn_to_be_added = null):
+	
+	#if there is a custom rscn, try to append that. if there is not, use random.
+	var potential_room
+	if rscn_to_be_added == null:
+		potential_room = room_scenes[randi_range(0, room_scenes.size()-1)].instantiate()
 	else:
-		print("gorn")
-		add_child(room)
-		last_generated_room = room
+		potential_room  = rscn_to_be_added
+	
+	print("onto the next..")
+	
+	#makes sure data is up to date for the room
+	potential_room.update_preview(true)
+	
+	#spawn if no other room
+	if room == null:
+		add_child(potential_room)
+		print("i must be the first!")
+		completed_rooms.append(potential_room)
+		last_generated_room = potential_room
+		return true
+	
+	#kiss connectors
+	var open_doorways = room.connectors
+	var potential_doorways = potential_room.connectors
+	#paths lol xd random
+	potential_doorways.shuffle()
+	open_doorways.shuffle()
+	#check every open, and potential doorway for compatability. 
+	for od in open_doorways.size():
+		
+		for pd in potential_doorways.size():
+			
+			$Debug.global_position = open_doorways[od].global_position
+			$Debug2.global_position = potential_doorways[pd].global_position
+			
+			
+			if are_connectors_compatible(open_doorways[od], potential_doorways[pd]):
+				
+				if await kiss_connectors(room, potential_room, open_doorways[od], potential_doorways[pd]):
+					
+					
+					print("done!")
+					
+					return true
+				else:
+					print("X")
+			else:
+				print("incompatible")
+	
+	#bless up
 
-func are_rooms_compatible(rooma, roomb):
-	rooma.connectors.shuffle()
-	roomb.connectors.shuffle()
-	for cona in rooma.connectors:
-		for conb in roomb.connectors:
-			if are_connectors_compatible(cona, conb):
-				return true
+
+#cant find better naming convention... now kith
+func kiss_connectors(og_room, potential_room, og_connector, potential_connector):
+	if og_connector.taken == true:
+		print("taken!")
+		return false
+	if potential_connector.taken == true:
+		print("taken!")
+		return false
+	
+	#align collision detection correctly.
+	if not await does_room_fit(potential_room, og_connector, potential_connector):
+		print("dont fit!")
+		return false
+	
+	#check if collision detection detects conflicting rooms. if not, spawn room.
+	
+	
+	potential_room.global_position = og_connector.global_position
+	potential_room.realign_to(potential_connector)
+	
+	og_connector.taken = true
+	potential_connector.taken = true
+	
+	var final_potential_room = potential_room.duplicate()
+	final_potential_room.global_position = potential_room.global_position
+	last_generated_room = final_potential_room
+	completed_rooms.append(final_potential_room)
+	add_child(final_potential_room)
+	$Camera2D.position = final_potential_room.position
+	return true
+
+
+func has_overlapping_rooms(area:Area2D, exception):
+	
+	area.force_update_transform()
+	for i in area.get_overlapping_areas():
+		if i == exception:
+			
+			continue
+		if i.is_in_group("room"):
+			
+			return true
 	return false
 
-func are_connectors_compatible(cona, conb):
-	var result
+
+func does_room_fit(room, connector, ref_connector):
+	var offset = room.bounds_offset
+	var roomcoll_shape = roomcoll_area.get_child(0)
 	
-	if cona.left == true:
-		if conb.right == true:
+	roomcoll_shape.shape.size = room.bounds
+	
+	
+	#$Debug.position = connector.position
+	#$Debug.global_position -= room.get_realignment_vector(ref_connector)
+	
+	roomcoll_area.global_position = connector.global_position
+	
+	roomcoll_area.global_position -= room.get_realignment_vector(ref_connector)
+	roomcoll_area.global_position += offset
+	
+	var checking_offset = 3
+	if ref_connector.up:
+		roomcoll_area.global_position.y += checking_offset
+		
+	if ref_connector.down:
+		roomcoll_area.global_position.y -= checking_offset
+	if ref_connector.left:
+		roomcoll_area.global_position.x += checking_offset
+	if ref_connector.right:
+		roomcoll_area.global_position.x -= checking_offset
+
+
+	await get_tree().create_timer(0.4).timeout
+	
+	if has_overlapping_rooms(roomcoll_area, connector.get_parent().get_parent()):
+		return false
+	else:
+		return true
+
+
+#i hate this. it will have to do.
+func are_connectors_compatible(con_a, con_b):
+	
+	var result:bool
+	
+	if con_a.left == true:
+		if con_b.right == true:
 			result = true
-	
-	if cona.right == true:
-		if conb.left == true:
+
+	if con_a.right == true:
+		if con_b.left == true:
 			result = true
-	
-	if cona.up == true:
-		if conb.down == true:
+
+	if con_a.up == true:
+		if con_b.down == true:
 			result = true
-	
-	if cona.down == true:
-		if conb.up == true:
+
+	if con_a.down == true:
+		if con_b.up == true:
 			result = true
-	
+
 	return result
 
+
+#returns scenes in directory
 func dir_contents(path):
 	var scene_loads = []	
 	var dir = DirAccess.open(path)

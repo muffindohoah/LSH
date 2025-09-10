@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7wo2u5gtxi4b"]
+
+[ext_resource type="Script" path="res://generation/room.gd" id="1_j6keh"]
+[ext_resource type="Texture2D" uid="uid://cp3ddnkdfqof0" path="res://icon.svg" id="2_5jjcu"]
+[ext_resource type="PackedScene" uid="uid://e2b0c1thmwn0" path="res://generation/connector.tscn" id="3_58riv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jyrt"]
+
+[node name="room" type="Area2D" groups=["room"]]
+script = ExtResource("1_j6keh")
+
+[node name="Bounds" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2jyrt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5jjcu")
+
+[node name="Connectors" type="Node2D" parent="."]
+
+[node name="left" parent="Connectors" instance=ExtResource("3_58riv")]
+position = Vector2(-63, 0)
+left = true
+
+[node name="right" parent="Connectors" instance=ExtResource("3_58riv")]
+position = Vector2(62, 1)
+right = true

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SideQuest" load_steps=2 format=3 uid="uid://c8qvgy530fe7i"]
+
+[ext_resource type="Script" uid="uid://dii1y0ppl4ihr" path="res://generation/sidequests/sidequestbase.gd" id="1_8b1o5"]
+
+[resource]
+script = ExtResource("1_8b1o5")
+sidequest_name = "Straight from the Underground"
+quest_length = 2
+metadata/_custom_type_script = "uid://dii1y0ppl4ihr"

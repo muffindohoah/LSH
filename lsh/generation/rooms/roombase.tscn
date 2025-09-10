@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=4 uid="uid://bfup0dui2gjwo"]
+
+[ext_resource type="Script" path="res://generation/roombase.gd" id="1_csiw4"]
+[ext_resource type="PackedScene" uid="uid://e2b0c1thmwn0" path="res://generation/connector.tscn" id="2_bod43"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwb58"]
+size = Vector2(208, 92)
+
+[node name="Roombase" type="Area2D" groups=["room"]]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_csiw4")
+
+[node name="Bounds" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_iwb58")
+
+[node name="Connectors" type="Node2D" parent="."]
+
+[node name="Right" parent="Connectors" instance=ExtResource("2_bod43")]
+position = Vector2(104, 32)
+right = true
+
+[node name="Down" parent="Connectors" instance=ExtResource("2_bod43")]
+position = Vector2(0, 40)
+down = true
+
+[node name="Left" parent="Connectors" instance=ExtResource("2_bod43")]
+position = Vector2(-104, 32)
+left = true
+
+[node name="Up" parent="Connectors" instance=ExtResource("2_bod43")]
+position = Vector2(0, -36)
+up = true
+
+[node name="Floor" type="TileMapLayer" parent="."]
+position = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAD//wAAAAAFAAAAAAAAAP//AAAFAAAAAAAAAAEAAAAFAAAAAAD+/wEAAAAFAAAAAAD+////AAAFAAAAAAAAAAAAAAAFAAEAAAD/////AAAFAAEAAAD+/wAAAAAFAAEAAAD//wEAAAAFAAEAAAABAP//AAABAAEAAAABAP7/AAACAAEAAAD9//7/AAADAAEAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAD+//7/AAABAAEAAAD///7/AAABAAEAAAAAAP7/AAABAAEAAAABAAAAAAAFAAAAAAD9/wAAAAAFAAAAAAABAAEAAAAEAAAAAAD9/wEAAAAFAAEAAAD9////AAABAAEAAAD9//3/AAAHAAAAAAABAP3/AAAGAAAAAAACAP7/AAABAAAAAAACAP//AAABAAEAAAADAP7/AAABAAAAAAADAP//AAABAAEAAAAEAP7/AAABAAAAAAAEAP//AAABAAEAAAD8//7/AAABAAAAAAD8////AAABAAEAAAD7//7/AAABAAAAAAD7////AAABAAEAAAD6//7/AAABAAAAAAD6////AAABAAEAAAD7/wEAAAAEAAAAAAD8/wEAAAAFAAAAAAD6/wAAAAAEAAAAAAD7/wAAAAAFAAAAAAD6/wIAAAAEAAAAAAD7/wIAAAAFAAAAAAD8/wIAAAAEAAAAAAD9/wIAAAAFAAAAAAD8/wAAAAAEAAAAAAD+/wIAAAAEAAAAAAD//wIAAAAFAAAAAAAAAAIAAAAEAAAAAAABAAIAAAAFAAAAAAACAAIAAAAEAAAAAAADAAIAAAAFAAAAAAACAAAAAAAEAAAAAAADAAAAAAAFAAAAAAADAAEAAAAEAAAAAAAEAAEAAAAFAAAAAAACAAEAAAAFAAAAAAD5/wEAAAAEAAAAAAD6/wEAAAAFAAAAAAAEAAAAAAAEAAAAAAAFAAAAAAAFAAAAAAAEAAIAAAAEAAAAAAAFAAIAAAAFAAAAAAAFAAEAAAAEAAAAAAD5/wAAAAAFAAAAAAD5/wIAAAAFAAAAAAA=")
+
+[node name="Walls&Pits" type="TileMapLayer" parent="Floor"]

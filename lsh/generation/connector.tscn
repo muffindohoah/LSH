@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmcevm7u5wpa2"]
+[gd_scene load_steps=2 format=3 uid="uid://e2b0c1thmwn0"]
 
-[ext_resource type="Script" uid="uid://cat603757p06w" path="res://generation/connector.gd" id="1_evvuf"]
+[ext_resource type="Script" uid="uid://b0adfgo1evn1a" path="res://generation/connector.gd" id="1_evvuf"]
 
-[node name="connector" type="Node2D"]
+[node name="connector" type="Node2D" groups=["connector"]]
 script = ExtResource("1_evvuf")
 
 [node name="Marker2D" type="Marker2D" parent="."]
