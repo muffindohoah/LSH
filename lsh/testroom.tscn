@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsk1xfakfn6sf"]
+
+[ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
+[ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
+
+[node name="Testroom" type="Node2D"]
+
+[node name="Lhstilefloor" type="Sprite2D" parent="."]
+position = Vector2(-26, 39)
+texture = ExtResource("1_aes75")
+
+[node name="Lhstilefloor2" type="Sprite2D" parent="."]
+position = Vector2(-41, 25)
+texture = ExtResource("1_aes75")
+
+[node name="Node2D" parent="." instance=ExtResource("2_dwq1p")]
+position = Vector2(3, -5)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 31.0
+offset_right = 65.0
+offset_bottom = 54.0
+text = "romromrom"

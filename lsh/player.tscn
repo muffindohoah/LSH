@@ -4,21 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://de2oy8i03jfkc" path="res://9e7e6a795a38ffa95345b0f3e41446a3.jpg" id="2_epypp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(313, 441)
+size = Vector2(30, 32)
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Drunk UMD Student" type="CharacterBody2D" parent="."]
+[node name="Drunk UMD Student" type="CharacterBody2D"]
 script = ExtResource("1_0e48y")
 
-[node name="Sprite2D" type="Sprite2D" parent="Drunk UMD Student"]
-position = Vector2(1, -2)
-scale = Vector2(0.42380953, 0.58643615)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0408163, 0.0425532)
 texture = ExtResource("2_epypp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Drunk UMD Student"]
-position = Vector2(1.5, -2.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0hol4")
 
-[node name="Camera2D" type="Camera2D" parent="Drunk UMD Student"]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, 1)
+zoom = Vector2(5.195, 5.195)
+position_smoothing_enabled = true
