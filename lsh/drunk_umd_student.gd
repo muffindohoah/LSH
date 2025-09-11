@@ -35,7 +35,7 @@ func movement(d):
 	
 	if input_dir != Vector2(0,0) and current_speed < current_max_speed:
 		current_speed += accel 
-	else:
-		current_speed -= accel 
+	elif input_dir == Vector2(0,0):
+		current_speed = 0
 	
 	velocity = input_dir.normalized() * current_speed
