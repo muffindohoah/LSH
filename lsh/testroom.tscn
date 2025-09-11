@@ -13,7 +13,7 @@ texture = ExtResource("1_aes75")
 position = Vector2(-41, 25)
 texture = ExtResource("1_aes75")
 
-[node name="Node2D" parent="." instance=ExtResource("2_dwq1p")]
+[node name="player" parent="." instance=ExtResource("2_dwq1p")]
 position = Vector2(3, -5)
 
 [node name="Label" type="Label" parent="."]
