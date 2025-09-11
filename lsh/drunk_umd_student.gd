@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-var speed = 150.0
+var max_speed = 150.0
+var current_speed = 0
+var accel = 3
 
 func _physics_process(delta):
 	movement()
@@ -20,5 +22,9 @@ func movement():
 		input_dir.x = 0
 	if Input.is_action_pressed("up") and Input.is_action_pressed("down"):
 		input_dir.y = 0
-	velocity = input_dir.normalized() * speed
+	if input_dir != Vector2(0,0) and current_speed < max_speed:
+		current_speed += accel
+	else:
+		current_speed -= accel
+	velocity = input_dir.normalized() * current_speed
 	move_and_slide()
