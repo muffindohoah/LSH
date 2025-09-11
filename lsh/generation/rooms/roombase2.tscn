@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://c7j2acq8tw8s8" path="res://generation/rooms/roombase2.tres" id="3_3ftxm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwb58"]
-size = Vector2(80, 64)
+size = Vector2(128, 138)
 
 [node name="Roombase" type="Area2D" groups=["room"]]
 z_index = -1
@@ -29,11 +29,13 @@ Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, 95),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
 : Vector2(-16, 95),
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, 95),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
+: Vector2(-16, 95),
+Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, 95),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
 : Vector2(-16, 95)
 }
 
 [node name="Bounds" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(-2, 8)
 shape = SubResource("RectangleShape2D_iwb58")
 
 [node name="Connectors" type="Node2D" parent="."]

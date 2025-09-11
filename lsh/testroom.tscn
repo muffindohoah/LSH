@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsk1xfakfn6sf"]
+[gd_scene load_steps=4 format=4 uid="uid://dsk1xfakfn6sf"]
 
 [ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
+[ext_resource type="TileSet" uid="uid://c7j2acq8tw8s8" path="res://generation/rooms/roombase2.tres" id="3_dwq1p"]
 
 [node name="Testroom" type="Node2D"]
+texture_filter = 1
 
 [node name="Lhstilefloor" type="Sprite2D" parent="."]
 position = Vector2(-26, 39)
@@ -22,3 +24,7 @@ offset_top = 31.0
 offset_right = 65.0
 offset_bottom = 54.0
 text = "romromrom"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD///7/AAABAAgAAAAAAP7/AAABAAgAAAD+//7/AAAAAAgAAAABAP7/AAACAAgAAAABAP3/AAACAAcAAAAAAP3/AAABAAcAAAD///3/AAABAAcAAAD+//3/AAAAAAcAAAD+//z/AAAAAAUAAAABAPz/AAACAAUAAAD///z/AAABAAcAAAAAAPz/AAABAAcAAAAEAP3/AAAGAAkAAAAEAP7/AAADAAgAAAA=")
+tile_set = ExtResource("3_dwq1p")
