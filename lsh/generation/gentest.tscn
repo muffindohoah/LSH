@@ -15,11 +15,6 @@ script = ExtResource("1_tncbi")
 dungeon_length = 10
 sidequest_length = 0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.935, 1.935)
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-
 [node name="Area2D" type="Area2D" parent="."]
 top_level = true
 collision_layer = 128

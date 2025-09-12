@@ -134,7 +134,7 @@ func kiss_connectors(og_room, potential_room, og_connector, potential_connector)
 	last_generated_room = final_potential_room
 	completed_rooms.append(final_potential_room)
 	add_child(final_potential_room)
-	$Camera2D.position = final_potential_room.position
+	#$Camera2D.position = final_potential_room.position
 	return true
 
 

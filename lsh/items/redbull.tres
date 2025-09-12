@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://yg42f12v4rxa"]
+
+[ext_resource type="Texture2D" uid="uid://dp826okhul0sm" path="res://assets/items/beerpholder.png" id="1_70ja3"]
+[ext_resource type="Texture2D" uid="uid://ci1dcocla1me6" path="res://assets/items/beergrounded.png" id="1_p2kd4"]
+[ext_resource type="Script" uid="uid://mnymuefnfn1u" path="res://items/itemclass.gd" id="1_vl1ti"]
+
+[resource]
+script = ExtResource("1_vl1ti")
+inventory_texture = ExtResource("1_70ja3")
+dropped_texture = ExtResource("1_p2kd4")
+metadata/_custom_type_script = "uid://mnymuefnfn1u"

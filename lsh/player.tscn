@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxbseoit5c0a8"]
+[gd_scene load_steps=6 format=3 uid="uid://cxbseoit5c0a8"]
 
 [ext_resource type="Script" uid="uid://cqmp80drs6eo4" path="res://drunk_umd_student.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://de2oy8i03jfkc" path="res://9e7e6a795a38ffa95345b0f3e41446a3.jpg" id="2_epypp"]
 [ext_resource type="PackedScene" uid="uid://b7ibbe4kysc2j" path="res://gui.tscn" id="3_i3pqv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(30, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
+radius = 34.0
 
 [node name="Drunk UMD Student" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_0e48y")
@@ -15,13 +17,21 @@ scale = Vector2(0.0408163, 0.0425532)
 texture = ExtResource("2_epypp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_0hol4")
+shape = SubResource("CircleShape2D_i3pqv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, 1)
 zoom = Vector2(2.55, 2.55)
 position_smoothing_enabled = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hqtel")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource("3_i3pqv")]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

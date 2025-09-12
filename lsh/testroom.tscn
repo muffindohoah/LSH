@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://b6mynbyrvl648"]
+[gd_scene load_steps=7 format=4 uid="uid://b6mynbyrvl648"]
 
 [ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
 [ext_resource type="TileSet" uid="uid://c13imbptut0kv" path="res://generation/rooms/roombase2.tres" id="3_dwq1p"]
 [ext_resource type="PackedScene" uid="uid://dcg061r3gc3c4" path="res://ra.tscn" id="4_c7xoc"]
+[ext_resource type="PackedScene" uid="uid://binrejlhbshhj" path="res://items/droppeditem.tscn" id="5_gunkr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dwq1p"]
 vertices = PackedVector2Array(313.469, -93.8906, 327.461, 166.398, -169.633, 185.633, -190.281, -143.883)
@@ -41,3 +42,12 @@ position = Vector2(107, 64)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-73, -54)
 navigation_polygon = SubResource("NavigationPolygon_dwq1p")
+
+[node name="Droppeditem" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-96, -47)
+
+[node name="Droppeditem2" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-152, -87)
+
+[node name="Droppeditem3" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-201, -41)

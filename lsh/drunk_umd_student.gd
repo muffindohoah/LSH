@@ -12,9 +12,14 @@ var stamina = 100
 var can_sprint = true
 var is_hidden = false
 
+var held_item:Item
+
+func _init() -> void:
+	Utils.PLAYER = self
+
 func _physics_process(delta):
 	movement(delta)
-	
+	interact(delta)
 	Utils.GUI.sprint_meter.value = stamina
 	move_and_slide()
 
@@ -25,12 +30,10 @@ func movement(d):
 		current_max_speed = sprint_max_speed
 		if stamina == 0:
 			can_sprint = false
-		
 	else:
 		if stamina < max_stamina:
 			stamina += 0.2
 		current_max_speed = walk_max_speed
-	
 	if can_sprint == false and stamina >= max_stamina:
 		can_sprint = true
 	
@@ -54,5 +57,28 @@ func movement(d):
 		current_speed = 0
 	elif current_speed > current_max_speed:
 		current_speed -= accel 
-	
 	velocity = input_dir.normalized() * current_speed
+
+
+
+var interactables_in_ranges = []
+
+func interact(d):
+	if Input.is_action_just_pressed("interact"):
+		if interactables_in_ranges.size() > 0:
+			interactables_in_ranges[0].interact()
+
+func pick_up(item:Item):
+	if !held_item:
+		held_item = item
+		Utils.GUI.update_ui()
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var interactable = area.get_parent()
+	if interactable.is_in_group("interactable"):
+		interactables_in_ranges.append(interactable)
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	var interactable = area.get_parent()
+	if interactable.is_in_group("interactable"):
+		interactables_in_ranges.erase(interactable)

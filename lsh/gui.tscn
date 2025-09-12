@@ -1,6 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7ibbe4kysc2j"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ibbe4kysc2j"]
 
 [ext_resource type="Script" uid="uid://ja5ib180yc3e" path="res://gui.gd" id="1_80edf"]
+[ext_resource type="Texture2D" uid="uid://dp826okhul0sm" path="res://assets/items/beerpholder.png" id="2_6lon5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lon5"]
+bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6omp"]
 bg_color = Color(0.0414, 0.06327, 0.09, 1)
@@ -9,6 +17,7 @@ bg_color = Color(0.0414, 0.06327, 0.09, 1)
 bg_color = Color(0.903598, 0.903598, 0.903598, 1)
 
 [node name="GUI" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +26,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_80edf")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6lon5")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("2_6lon5")
+stretch_mode = 3
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
