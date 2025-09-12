@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxbseoit5c0a8"]
+[gd_scene load_steps=5 format=3 uid="uid://cxbseoit5c0a8"]
 
 [ext_resource type="Script" uid="uid://cqmp80drs6eo4" path="res://drunk_umd_student.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://de2oy8i03jfkc" path="res://9e7e6a795a38ffa95345b0f3e41446a3.jpg" id="2_epypp"]
+[ext_resource type="PackedScene" uid="uid://b7ibbe4kysc2j" path="res://gui.tscn" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
 size = Vector2(30, 32)
@@ -20,3 +21,7 @@ shape = SubResource("RectangleShape2D_0hol4")
 position = Vector2(1, 1)
 zoom = Vector2(2.55, 2.55)
 position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("3_i3pqv")]

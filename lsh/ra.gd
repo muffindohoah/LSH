@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		vision_ray.set_target_position(vision_ray.to_local(target.global_position))
 		if vision_ray.is_colliding():
 			var hit = vision_ray.get_collider()
-			if hit == target:
+			if hit == target and !target.is_hidden:
 				target_vision = true
 				last_seen = target.global_position
 				nav_agent.target_position = last_seen
