@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcg061r3gc3c4"]
+
+[ext_resource type="Script" uid="uid://dfjv378cf0pk0" path="res://ra.gd" id="1_02oe1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nx61"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02oe1"]
+radius = 152.315
+
+[node name="RA" type="CharacterBody2D"]
+script = ExtResource("1_02oe1")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 1000.0
+avoidance_enabled = true
+radius = 25.62
+debug_enabled = true
+debug_path_custom_color = Color(0, 1, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1nx61")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_02oe1")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = 3.14159
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

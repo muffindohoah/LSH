@@ -1,6 +1,12 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c7j2acq8tw8s8"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://c13imbptut0kv"]
 
 [ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="1_ig2d3"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ig2d3"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhu5v"]
 texture = ExtResource("1_ig2d3")
@@ -54,6 +60,7 @@ texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 0:1/0 = 0
 0:1/0/z_index = -1
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ig2d3")
 1:1/0 = 0
 1:1/0/z_index = 1
 1:1/0/terrain_set = 0
@@ -152,6 +159,7 @@ texture_region_size = Vector2i(32, 32)
 7:5/0/terrain_set = 0
 0:0/0 = 0
 0:0/0/z_index = -1
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ig2d3")
 8:0/0 = 0
 9:0/0 = 0
 8:1/0 = 0
@@ -340,4 +348,5 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_dhu5v")
