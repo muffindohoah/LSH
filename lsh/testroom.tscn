@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://b6mynbyrvl648"]
+[gd_scene load_steps=8 format=4 uid="uid://b6mynbyrvl648"]
 
 [ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
 [ext_resource type="TileSet" uid="uid://c13imbptut0kv" path="res://generation/rooms/roombase2.tres" id="3_dwq1p"]
 [ext_resource type="PackedScene" uid="uid://dcg061r3gc3c4" path="res://ra.tscn" id="4_c7xoc"]
 [ext_resource type="PackedScene" uid="uid://binrejlhbshhj" path="res://items/droppeditem.tscn" id="5_gunkr"]
+[ext_resource type="PackedScene" uid="uid://dguocq7ph6n0r" path="res://generation/door.tscn" id="6_eqbee"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dwq1p"]
 vertices = PackedVector2Array(313.469, -93.8906, 327.461, 166.398, -169.633, 185.633, -190.281, -143.883)
@@ -33,7 +34,7 @@ offset_bottom = 54.0
 text = "romromrom"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD///3/AAAFAAIAAAD///7/AAAEAAAAAAD+//7/AAACAAEAAAD8/wAAAAAEAAAAAAD7/wAAAAADAAAAAAD7//7/AAACAAEAAAD7//z/AAACAAEAAAD6//z/AAADAAIAAAD8//z/AAAEAAAAAAD9//z/AAAEAAAAAAD+//z/AAAEAAIAAAD9//7/AAADAAAAAAD9/wAAAAAEAAAAAAD6//7/AAAFAAAAAAD7////AAACAAEAAAD6////AAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///3/AAAFAAIAAAD///7/AAAEAAAAAAD+//7/AAACAAEAAAD8/wAAAAAEAAAAAAD7/wAAAAADAAAAAAD7//7/AAACAAEAAAD7//z/AAACAAEAAAD6//z/AAADAAIAAAD8//z/AAAEAAAAAAD9//z/AAAEAAAAAAD+//z/AAAEAAIAAAD9//7/AAADAAAAAAD9/wAAAAAEAAAAAAD6//7/AAAFAAAAAAD7////AAACAAEAAAD6////AAADAAAAAAD8//7/AAAEAAAAAAA=")
 tile_set = ExtResource("3_dwq1p")
 
 [node name="RA" parent="." instance=ExtResource("4_c7xoc")]
@@ -44,10 +45,13 @@ position = Vector2(-73, -54)
 navigation_polygon = SubResource("NavigationPolygon_dwq1p")
 
 [node name="Droppeditem" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-96, -47)
+position = Vector2(-186, -9)
 
 [node name="Droppeditem2" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-152, -87)
+position = Vector2(-194, -74)
 
 [node name="Droppeditem3" parent="." instance=ExtResource("5_gunkr")]
 position = Vector2(-201, -41)
+
+[node name="Door" parent="." instance=ExtResource("6_eqbee")]
+position = Vector2(-96, -62)

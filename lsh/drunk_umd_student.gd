@@ -20,6 +20,7 @@ func _init() -> void:
 func _physics_process(delta):
 	movement(delta)
 	interact(delta)
+	items(delta)
 	Utils.GUI.sprint_meter.value = stamina
 	move_and_slide()
 
@@ -67,6 +68,19 @@ func interact(d):
 	if Input.is_action_just_pressed("interact"):
 		if interactables_in_ranges.size() > 0:
 			interactables_in_ranges[0].interact()
+
+func items(d):
+	if Input.is_action_just_pressed("itemuse"):
+		if held_item.use_scene:
+			var item_use_scene = held_item.use_scene.instantiate()
+			add_child(item_use_scene)
+			drop_item()
+		else:
+			drop_item()
+
+func drop_item():
+	held_item = null
+	Utils.GUI.update_ui()
 
 func pick_up(item:Item):
 	if !held_item:

@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://yg42f12v4rxa" path="res://items/redbull.tres" id="2_s24qg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v33vg"]
-radius = 45.0999
+radius = 16.0312
 
 [node name="Droppeditem" type="Node2D" groups=["interactable"]]
 script = ExtResource("1_v33vg")
