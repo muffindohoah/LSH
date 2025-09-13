@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci1dcocla1me6"
-path="res://.godot/imported/beergrounded.png-b7b17ac0163445fb92887115a2dbe17f.ctex"
+uid="uid://ckdhx4g0xyqc1"
+path="res://.godot/imported/You died.png-6101edef75b219a21bf5631dcde503f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/beergrounded.png"
-dest_files=["res://.godot/imported/beergrounded.png-b7b17ac0163445fb92887115a2dbe17f.ctex"]
+source_file="res://Font/Consolas-Font/You died.png"
+dest_files=["res://.godot/imported/You died.png-6101edef75b219a21bf5631dcde503f0.ctex"]
 
 [params]
 
