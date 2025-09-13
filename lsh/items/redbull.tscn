@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgjj3nh4l5kms"]
+
+[ext_resource type="Script" uid="uid://bn4mldh7u1vb3" path="res://items/redbull.gd" id="1_63hcr"]
+
+[sub_resource type="Gradient" id="Gradient_1yxio"]
+colors = PackedColorArray(0.99, 0, 0.0164997, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_63hcr"]
+gradient = SubResource("Gradient_1yxio")
+width = 15
+
+[sub_resource type="Curve" id="Curve_tggj6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.941839, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wyerr"]
+curve = SubResource("Curve_tggj6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bbm3f"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angular_velocity_min = -217.26
+angular_velocity_max = 353.68
+gravity = Vector3(0, -10, 0)
+alpha_curve = SubResource("CurveTexture_wyerr")
+
+[node name="Redbull" type="Node2D"]
+script = ExtResource("1_63hcr")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture = SubResource("GradientTexture1D_63hcr")
+process_material = SubResource("ParticleProcessMaterial_bbm3f")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

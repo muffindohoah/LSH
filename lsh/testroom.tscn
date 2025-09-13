@@ -34,7 +34,7 @@ offset_bottom = 54.0
 text = "romromrom"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD///3/AAAFAAIAAAD///7/AAAEAAAAAAD+//7/AAACAAEAAAD8/wAAAAAEAAAAAAD7/wAAAAADAAAAAAD7//7/AAACAAEAAAD7//z/AAACAAEAAAD6//z/AAADAAIAAAD8//z/AAAEAAAAAAD9//z/AAAEAAAAAAD+//z/AAAEAAIAAAD9//7/AAADAAAAAAD9/wAAAAAEAAAAAAD6//7/AAAFAAAAAAD7////AAACAAEAAAD6////AAADAAAAAAD8//7/AAAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///3/AAAFAAIAAAD///7/AAAEAAAAAAD+//7/AAACAAEAAAD8/wAAAAAEAAAAAAD7/wAAAAADAAAAAAD7//7/AAACAAEAAAD7//z/AAACAAEAAAD6//z/AAADAAIAAAD8//z/AAAEAAAAAAD9//z/AAAEAAAAAAD+//z/AAAEAAIAAAD9//7/AAAGAAQAAAD9/wAAAAAEAAAAAAD6//7/AAAFAAAAAAD7////AAACAAEAAAD6////AAADAAAAAAD8//7/AAAEAAAAAAA=")
 tile_set = ExtResource("3_dwq1p")
 
 [node name="RA" parent="." instance=ExtResource("4_c7xoc")]
@@ -48,7 +48,7 @@ navigation_polygon = SubResource("NavigationPolygon_dwq1p")
 position = Vector2(-186, -9)
 
 [node name="Droppeditem2" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-194, -74)
+position = Vector2(-205, 41)
 
 [node name="Droppeditem3" parent="." instance=ExtResource("5_gunkr")]
 position = Vector2(-201, -41)
