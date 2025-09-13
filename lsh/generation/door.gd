@@ -9,8 +9,8 @@ func _physics_process(delta: float) -> void:
 
 func interact():
 	if Utils.PLAYER.position.y > self.position.y:
-		self.target_rotation -= force
-	else:
 		self.target_rotation += force
+	else:
+		self.target_rotation -= force
 	
 	#(Utils.PLAYER.position - self.position).normalized() * force
