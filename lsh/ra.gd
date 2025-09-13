@@ -10,6 +10,7 @@ var target
 var searching: bool = false
 var target_vision = false
 var next_point
+var ignore_nav = false
 var direction
 
 func _ready() -> void:
@@ -65,5 +66,8 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 func bang_in(body):
 	for i in body.health:
 		$AudioStreamPlayer2D.play()
-		await get_tree().create_timer(0.8).timeout
 		body.health -=1
+		if body == null:
+			print("fix")
+			last_seen += (self.position - (body.position)).normalized() * 100
+		await get_tree().create_timer(0.8).timeout
