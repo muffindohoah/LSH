@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcg061r3gc3c4"]
+[gd_scene load_steps=7 format=3 uid="uid://dcg061r3gc3c4"]
 
 [ext_resource type="Script" uid="uid://dfjv378cf0pk0" path="res://ra.gd" id="1_02oe1"]
+[ext_resource type="AudioStream" uid="uid://clgwqblicqt3n" path="res://generation/Wood Breaking Sound Effect.mp3" id="2_bbrk0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1nx61"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_02oe1"]
 radius = 152.315
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_02oe1"]
+size = Vector2(26, 26)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbrk0"]
+radius = 18.0
 
 [node name="RA" type="CharacterBody2D"]
 script = ExtResource("1_02oe1")
@@ -28,12 +35,22 @@ shape = SubResource("CircleShape2D_02oe1")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = 3.14159
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -18.0
-offset_top = -19.0
-offset_right = 22.0
-offset_bottom = 21.0
-color = Color(0.53, 0.1961, 0.1961, 1)
+[node name="ColorRect" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PlaceholderTexture2D_02oe1")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_bbrk0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_bbrk0")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

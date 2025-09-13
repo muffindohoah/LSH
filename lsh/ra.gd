@@ -1,24 +1,23 @@
 extends CharacterBody2D
 var Friction = 0.8
+var speed = 16
 @onready var vision_ray = $RayCast2D
 @onready var nav_agent = $NavigationAgent2D
-var speed = 16
 @export var damage = 5
 @export var knockback = 100 
-var target
 @onready var last_seen = global_position
+var target
 var searching: bool = false
 var target_vision = false
 var next_point
 var direction
+
 func _ready() -> void:
 	pass
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		target = body
-		
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -58,3 +57,13 @@ func start_searching():
 	nav_agent.avoidance_enabled = true
 	nav_agent.target_position = last_seen
 	searching = true
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group("destructible"):
+		bang_in(body)
+
+func bang_in(body):
+	for i in body.health:
+		$AudioStreamPlayer2D.play()
+		await get_tree().create_timer(0.8).timeout
+		body.health -=1

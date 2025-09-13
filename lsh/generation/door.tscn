@@ -11,7 +11,7 @@ size = Vector2(32, 3)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jbhmb"]
 radius = 7.07107
 
-[node name="Door" type="CharacterBody2D" groups=["interactable"]]
+[node name="Door" type="CharacterBody2D" groups=["destructible", "interactable"]]
 texture_filter = 1
 script = ExtResource("1_r5ica")
 

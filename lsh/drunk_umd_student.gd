@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var walk_max_speed = 150
-var sprint_max_speed = 260
+var sprint_max_speed = 220
 var current_max_speed = 150
 var current_speed = 0
 var accel = 3

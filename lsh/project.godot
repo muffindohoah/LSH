@@ -26,6 +26,7 @@ window/stretch/mode="viewport"
 
 room=""
 interactable=""
+destructible=""
 
 [importer_defaults]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clgwqblicqt3n"
+path="res://.godot/imported/Wood Breaking Sound Effect.mp3-b8826bcb52fe132bf8a5e5e717829097.mp3str"
+
+[deps]
+
+source_file="res://generation/Wood Breaking Sound Effect.mp3"
+dest_files=["res://.godot/imported/Wood Breaking Sound Effect.mp3-b8826bcb52fe132bf8a5e5e717829097.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
