@@ -61,13 +61,14 @@ func start_searching():
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if body.is_in_group("destructible"):
-		bang_in(body)
+		if !body.is_open:
+			bang_in(body)
 
 func bang_in(body):
 	for i in body.health:
 		$AudioStreamPlayer2D.play()
+		var body_position = body.position + Vector2(16,0)
 		body.health -=1
-		if body == null:
-			print("fix")
-			last_seen += (self.position - (body.position)).normalized() * 100
 		await get_tree().create_timer(0.8).timeout
+		if body == null:
+			last_seen -= (self.position - (body_position)).normalized() * 40

@@ -28,3 +28,7 @@ texture = SubResource("PlaceholderTexture2D_jbhmb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(16, 0)
 shape = SubResource("CircleShape2D_jbhmb")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(16, 0)
+vertices = PackedVector2Array(16, 2, 16, -2, -16, -2, -16, 2)

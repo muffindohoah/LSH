@@ -1,20 +1,37 @@
 extends CharacterBody2D
 
-var force = 80
+var is_open = false
+var initial_rotation = 0
+
+var force = 90
 var weight = 0.3
 var target_rotation = 0.0
 
 var health = 3
 
+func _ready() -> void:
+	initial_rotation = rotation_degrees
+
 func _physics_process(delta: float) -> void:
-	rotation = lerp_angle(rotation, target_rotation, weight)
+	rotation_degrees = lerp(rotation_degrees, target_rotation, weight)
+	
 	if health <= 0:
 		queue_free()
 
 func interact():
+	
+	
 	if Utils.PLAYER.position.y > self.position.y:
-		self.target_rotation += force
+		target_rotation += force
 	else:
-		self.target_rotation -= force
+		target_rotation -= force
+	
+	print(target_rotation)
+	if target_rotation == initial_rotation:
+		modulate.b = 100
+		is_open = false
+	else:
+		modulate.b = 0
+		is_open = true
 	
 	#(Utils.PLAYER.position - self.position).normalized() * force

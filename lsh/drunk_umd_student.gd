@@ -26,7 +26,7 @@ func _physics_process(delta):
 
 func movement(d):
 	var input_dir:Vector2 = Vector2(0,0)
-	if Input.is_action_pressed("sprint") and can_sprint:
+	if Input.is_action_pressed("sprint") and can_sprint and stamina > 0.4:
 		stamina -= 0.5
 		current_max_speed = sprint_max_speed
 		if stamina == 0:
