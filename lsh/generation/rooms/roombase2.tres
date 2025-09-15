@@ -12,7 +12,7 @@ agent_radius = 0.0
 polygon = PackedVector2Array(8.24163, -16, 16, -16, 16, 16, 8.24163, 16)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sl3rv"]
-polygon = PackedVector2Array(8.24163, -16, 16, -16, 16, 0.933014, 8.24163, 1.24402)
+polygon = PackedVector2Array(10.036869, -16, 16, -16, 16, -4.779461, 10.6741295, -4.4608307)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5fdmn"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, 8.55263, 16, 8.55263, 2.17704, -16, 2.17704)
