@@ -8,7 +8,7 @@ var accel = 3
 var intoxication = 0
 
 var max_stamina = 100
-var stamina = 100
+var stamina = 100 - intoxication
 
 var can_move = true
 var can_sprint = true
