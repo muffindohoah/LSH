@@ -1,8 +1,20 @@
-[gd_resource type="TileSet" load_steps=33 format=3 uid="uid://c13imbptut0kv"]
+[gd_resource type="TileSet" load_steps=35 format=3 uid="uid://c13imbptut0kv"]
 
 [ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="1_ig2d3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ig2d3"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sl3rv"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5fdmn"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
@@ -101,6 +113,7 @@ texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 1:0/0/z_index = 1
 1:0/0/terrain_set = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_5fdmn")
 2:0/0 = 0
 2:0/0/z_index = 1
 2:0/0/terrain_set = 0
@@ -204,6 +217,7 @@ texture_region_size = Vector2i(32, 32)
 7:1/0/terrains_peering_bit/top_side = 0
 7:1/0/terrains_peering_bit/top_right_corner = 0
 0:2/0 = 0
+0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_sl3rv")
 1:2/0 = 0
 1:2/0/z_index = 1
 1:2/0/terrain_set = 0

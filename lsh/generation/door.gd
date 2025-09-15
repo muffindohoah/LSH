@@ -14,7 +14,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	rotation_degrees = lerp(rotation_degrees, target_rotation, weight)
-	
 
 func hit(by):
 	health -= 1
@@ -28,9 +27,9 @@ func interact():
 	if is_open:
 		target_rotation = 0.0
 	elif Utils.PLAYER.position.y > self.position.y:
-		target_rotation += force
-	else:
 		target_rotation -= force
+	else:
+		target_rotation += force
 	
 	print(target_rotation)
 	if target_rotation == initial_rotation:
