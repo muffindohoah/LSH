@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkjjue4v8ogan"]
+
+[ext_resource type="Script" uid="uid://dsacumambrrjh" path="res://toilet.gd" id="1_ayuo3"]
+[ext_resource type="Texture2D" uid="uid://cotdbb8tv3fma" path="res://assets/rooms/toilet.png" id="2_ywylc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmv4x"]
+size = Vector2(20, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rurb"]
+radius = 7.0
+
+[node name="toilet" type="StaticBody2D" groups=["interactable"]]
+script = ExtResource("1_ayuo3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_ywylc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_dmv4x")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6rurb")

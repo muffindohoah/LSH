@@ -15,13 +15,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	rotation_degrees = lerp(rotation_degrees, target_rotation, weight)
 	
+
+func hit(by):
+	health -= 1
 	if health <= 0:
 		queue_free()
+	if !by.chasing:
+		interact()
 
 func interact():
 	
-	
-	if Utils.PLAYER.position.y > self.position.y:
+	if is_open:
+		target_rotation = 0.0
+	elif Utils.PLAYER.position.y > self.position.y:
 		target_rotation += force
 	else:
 		target_rotation -= force

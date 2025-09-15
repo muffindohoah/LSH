@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcg061r3gc3c4"]
+[gd_scene load_steps=8 format=3 uid="uid://dcg061r3gc3c4"]
 
 [ext_resource type="Script" uid="uid://dfjv378cf0pk0" path="res://ra.gd" id="1_02oe1"]
 [ext_resource type="AudioStream" uid="uid://clgwqblicqt3n" path="res://generation/Wood Breaking Sound Effect.mp3" id="2_bbrk0"]
+[ext_resource type="AudioStream" uid="uid://bd7okbb3xgmbx" path="res://assets/evils/Slow breathing sound effect.mp3" id="2_ctws7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1nx61"]
-radius = 6.0
+radius = 4.12311
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_02oe1"]
 radius = 152.315
@@ -19,11 +20,11 @@ radius = 18.0
 script = ExtResource("1_02oe1")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_max_distance = 1000.0
+navigation_layers = 3
 avoidance_enabled = true
 radius = 25.62
-debug_enabled = true
-debug_path_custom_color = Color(0, 1, 1, 1)
+avoidance_layers = 3
+avoidance_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1nx61")
@@ -45,13 +46,28 @@ texture = SubResource("PlaceholderTexture2D_02oe1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource("CircleShape2D_bbrk0")
 
+[node name="Timer2" type="Timer" parent="."]
+autostart = true
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 8.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ctws7")
+autoplay = true
+parameters/looping = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_bbrk0")
+volume_db = -25.25
 
+[node name="Timer3" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
