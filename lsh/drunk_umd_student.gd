@@ -5,6 +5,7 @@ var sprint_max_speed = 220
 var current_max_speed = 150
 var current_speed = 0
 var accel = 3
+var intoxication = 0
 
 var max_stamina = 100
 var stamina = 100

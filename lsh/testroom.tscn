@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b6mynbyrvl648"]
+[gd_scene load_steps=15 format=4 uid="uid://b6mynbyrvl648"]
 
 [ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dcg061r3gc3c4" path="res://ra.tscn" id="4_c7xoc"]
 [ext_resource type="PackedScene" uid="uid://binrejlhbshhj" path="res://items/droppeditem.tscn" id="5_gunkr"]
 [ext_resource type="PackedScene" uid="uid://dguocq7ph6n0r" path="res://generation/door.tscn" id="6_eqbee"]
+[ext_resource type="Resource" uid="uid://cnjn08kpa8jqa" path="res://assets/items/Bud_Light.tres" id="6_im1w5"]
 [ext_resource type="Resource" uid="uid://d2dq5vxm2ep2j" path="res://items/toiletcover.tres" id="6_tt3vw"]
 [ext_resource type="PackedScene" uid="uid://bkjjue4v8ogan" path="res://toilet.tscn" id="7_iye0w"]
 [ext_resource type="Shader" uid="uid://begwxca5xya52" path="res://fogofwar.gdshader" id="9_siutm"]
@@ -56,6 +57,7 @@ position = Vector2(-87, -162)
 
 [node name="Droppeditem" parent="." instance=ExtResource("5_gunkr")]
 position = Vector2(-186, -9)
+item_reference = ExtResource("6_im1w5")
 
 [node name="Droppeditem2" parent="." instance=ExtResource("5_gunkr")]
 position = Vector2(-205, 41)

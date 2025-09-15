@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cnjn08kpa8jqa"]
+
+[ext_resource type="Script" uid="uid://mnymuefnfn1u" path="res://items/itemclass.gd" id="1_fgb2d"]
+[ext_resource type="Texture2D" uid="uid://gq72xgev4odi" path="res://assets/items/budlightgrounded.png" id="1_vdqqg"]
+[ext_resource type="Texture2D" uid="uid://v7itsnv5gknb" path="res://assets/items/budlight.png" id="2_3ltw1"]
+
+[resource]
+script = ExtResource("1_fgb2d")
+name = "Bud Light"
+inventory_texture = ExtResource("2_3ltw1")
+dropped_texture = ExtResource("1_vdqqg")
+metadata/_custom_type_script = "uid://mnymuefnfn1u"
