@@ -33,7 +33,7 @@ position = Vector2(-41, 25)
 texture = ExtResource("1_aes75")
 
 [node name="player" parent="." instance=ExtResource("2_dwq1p")]
-position = Vector2(3, -5)
+position = Vector2(29, 53)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 25.0
@@ -48,7 +48,7 @@ navigation_polygon = SubResource("NavigationPolygon_dwq1p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 position = Vector2(73, 54)
-tile_map_data = PackedByteArray("AAD///3/AAAFAAIAAAD///7/AAAEAAAAAAD+//7/AAACAAEAAAD8/wAAAAAEAAAAAAD7/wAAAAADAAAAAAD7//7/AAACAAEAAAD7//z/AAACAAEAAAD6//z/AAADAAIAAAD8//z/AAAEAAAAAAD9//z/AAAEAAAAAAD+//z/AAAEAAIAAAD9//7/AAAGAAQAAAD9/wAAAAAEAAAAAAD6//7/AAAFAAAAAAD7////AAACAAEAAAD6////AAADAAAAAAD8//7/AAAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///7/AAAHAAMAAAD6////AAADAAAAAAD8//7/AAAHAAMAAAD7//7/AAAIAAMAAAD9/wAAAAAFAAQAAAD7////AAAJAAQAAAD+//z/AAAJAAMAAAD9//z/AAAHAAMAAAD8//z/AAAJAAMAAAD7//z/AAAJAAMAAAD///3/AAAIAAMAAAD+//7/AAAJAAMAAAD8/wAAAAAJAAMAAAD7/wAAAAAEAAQAAAD///z/AAAHAAQAAAA=")
 tile_set = ExtResource("3_dwq1p")
 
 [node name="RA" parent="." instance=ExtResource("4_c7xoc")]
@@ -68,9 +68,10 @@ item_reference = ExtResource("6_tt3vw")
 position = Vector2(-96, -62)
 
 [node name="toilet" parent="." instance=ExtResource("7_iye0w")]
-position = Vector2(-77, -95)
+position = Vector2(-48, -83)
 
 [node name="Fog Of War" type="Sprite2D" parent="."]
+visible = false
 light_mask = 2
 z_index = 25
 material = SubResource("ShaderMaterial_qxy0l")
@@ -79,4 +80,4 @@ scale = Vector2(37.955, 37.955)
 texture = ExtResource("10_qxy0l")
 
 [node name="UMDPISSER" parent="." instance=ExtResource("11_8moox")]
-position = Vector2(-53, -80)
+position = Vector2(-20, -80)
