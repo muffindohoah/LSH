@@ -1,20 +1,25 @@
 extends Node2D
 
-@onready var room_scenes = []#this will automatially append from */rooms
+@onready var room_scenes = [] #this will automatially append from */rooms
 @onready var completed_rooms = []
-@onready var roomcoll_area = $Area2D
+@onready var roomcoll_area: Area2D = $Area2D
 
-@export var dungeon_length = 3
+# TODO: make this a constant asap
+@export var dungeon_length: int = 3
 
 @export_category("Sidequests")
-@export var sidequest_length = 3
-@export var sidequest:SideQuest
+@export var sidequest_length: int = 3
+@export var sidequest: SideQuest
 
 var last_generated_room = null
 
+
+const _DOES_ROOM_FIT__TIMER_TIMEOUT_: float = 0.4
+
 func _ready() -> void:
+	# TODO: Not sure if any of this is necessary. randomize is ran on project start, and seeds aren't useful without a seed input
 	randomize()
-	var random_seed = randi()
+	var random_seed: int = randi()
 	$Label.text = "Seed: " + str(random_seed)
 	seed(random_seed)
 	
@@ -53,8 +58,7 @@ func generate():
 	print("that's a wrap.")
 
 
-func append_room_to(room = null, rscn_to_be_added = null):
-	
+func append_room_to(room = null, rscn_to_be_added = null) -> bool:
 	#if there is a custom rscn, try to append that. if there is not, use random.
 	var potential_room
 	if rscn_to_be_added == null:
@@ -78,40 +82,35 @@ func append_room_to(room = null, rscn_to_be_added = null):
 	#kiss connectors
 	var open_doorways = room.connectors
 	var potential_doorways = potential_room.connectors
+	
 	#paths lol xd random
 	potential_doorways.shuffle()
 	open_doorways.shuffle()
+	
 	#check every open, and potential doorway for compatability. 
 	for od in open_doorways.size():
-		
 		for pd in potential_doorways.size():
-			
 			$Debug.global_position = open_doorways[od].global_position
 			$Debug2.global_position = potential_doorways[pd].global_position
 			
-			
+			# TODO: Bro what is this
 			if are_connectors_compatible(open_doorways[od], potential_doorways[pd]):
-				
 				if await kiss_connectors(room, potential_room, open_doorways[od], potential_doorways[pd]):
-					
-					
 					print("done!")
-					
 					return true
 				else:
 					print("X")
 			else:
 				print("incompatible")
-	
 	#bless up
+	
+	# TODO: Should this return true?
+	return true
 
 
 #cant find better naming convention... now kith
-func kiss_connectors(og_room, potential_room, og_connector, potential_connector):
-	if og_connector.taken == true:
-		print("taken!")
-		return false
-	if potential_connector.taken == true:
+func kiss_connectors(og_room, potential_room, og_connector, potential_connector) -> bool:
+	if og_connector.taken || potential_connector.taken == true:
 		print("taken!")
 		return false
 	
@@ -121,8 +120,6 @@ func kiss_connectors(og_room, potential_room, og_connector, potential_connector)
 		return false
 	
 	#check if collision detection detects conflicting rooms. if not, spawn room.
-	
-	
 	potential_room.global_position = og_connector.global_position
 	potential_room.realign_to(potential_connector)
 	
@@ -138,34 +135,32 @@ func kiss_connectors(og_room, potential_room, og_connector, potential_connector)
 	return true
 
 
-func has_overlapping_rooms(area:Area2D, exception):
-	
+func has_overlapping_rooms(area:Area2D, exception) -> bool:
 	area.force_update_transform()
 	for i in area.get_overlapping_areas():
 		if i == exception:
-			
+			print("Ran into exception: " + i.toString())
 			continue
-		if i.is_in_group("room"):
 			
+		if i.is_in_group("room"):
 			return true
+
 	return false
 
 
 func does_room_fit(room, connector, ref_connector):
 	var offset = room.bounds_offset
 	var roomcoll_shape = roomcoll_area.get_child(0)
-	
 	roomcoll_shape.shape.size = room.bounds
-	
 	
 	#$Debug.position = connector.position
 	#$Debug.global_position -= room.get_realignment_vector(ref_connector)
 	
 	roomcoll_area.global_position = connector.global_position
-	
 	roomcoll_area.global_position -= room.get_realignment_vector(ref_connector)
 	roomcoll_area.global_position += offset
 	
+	# TODO: magic number
 	var checking_offset = 3
 	if ref_connector.up:
 		roomcoll_area.global_position.y += checking_offset
@@ -178,7 +173,7 @@ func does_room_fit(room, connector, ref_connector):
 		roomcoll_area.global_position.x -= checking_offset
 
 
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(_DOES_ROOM_FIT__TIMER_TIMEOUT_).timeout
 	
 	if has_overlapping_rooms(roomcoll_area, connector.get_parent().get_parent()):
 		return false
@@ -187,26 +182,16 @@ func does_room_fit(room, connector, ref_connector):
 
 
 #i hate this. it will have to do.
+	# made it nicer for you
 func are_connectors_compatible(con_a, con_b):
+	var result: bool = false
 	
-	var result:bool
+	if (con_a.left && con_b.right) || \
+		(con_a.right && con_b.left) || \
+		(con_a.up && con_b.down) || \
+		(con_a.down && con_b.up):
+			result = true
 	
-	if con_a.left == true:
-		if con_b.right == true:
-			result = true
-
-	if con_a.right == true:
-		if con_b.left == true:
-			result = true
-
-	if con_a.up == true:
-		if con_b.down == true:
-			result = true
-
-	if con_a.down == true:
-		if con_b.up == true:
-			result = true
-
 	return result
 
 
@@ -214,9 +199,11 @@ func are_connectors_compatible(con_a, con_b):
 func dir_contents(path):
 	var scene_loads = []	
 	var dir = DirAccess.open(path)
+	
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
+		
 		while file_name != "":
 			if dir.current_is_dir():
 				print("Found directory: " + file_name)

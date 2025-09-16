@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b6mynbyrvl648"]
+[gd_scene load_steps=15 format=4 uid="uid://b6mynbyrvl648"]
 
 [ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dcg061r3gc3c4" path="res://ra.tscn" id="4_c7xoc"]
 [ext_resource type="PackedScene" uid="uid://binrejlhbshhj" path="res://items/droppeditem.tscn" id="5_gunkr"]
 [ext_resource type="PackedScene" uid="uid://dguocq7ph6n0r" path="res://generation/door.tscn" id="6_eqbee"]
+[ext_resource type="Resource" uid="uid://cnjn08kpa8jqa" path="res://assets/items/Bud_Light.tres" id="6_im1w5"]
 [ext_resource type="Resource" uid="uid://d2dq5vxm2ep2j" path="res://items/toiletcover.tres" id="6_tt3vw"]
 [ext_resource type="PackedScene" uid="uid://bkjjue4v8ogan" path="res://toilet.tscn" id="7_iye0w"]
 [ext_resource type="Shader" uid="uid://begwxca5xya52" path="res://fogofwar.gdshader" id="9_siutm"]
@@ -13,8 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://0jm22i4p8ymy" path="res://evils/umdpisser.tscn" id="11_8moox"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dwq1p"]
-vertices = PackedVector2Array(-13, 81.7891, 19, 81.7891, 327.461, 166.461, -200.688, 190.523, -45, 82.6094, 83, 17.7891, 83, -52, 313.469, -93.8906, 19, 44, 51, 17.5938, -77, 49.5938, -72.7266, 49.5938, -73.8672, 81.5313, -77, 50.6094, -1, -20, -13, -46.2109, -13, -46.8438, 8.82813, -46.4063, 24.1094, -32, 31, -20, 51, 17.1484, -1, 17.5938, -45, 44, -13, 17.7891, -45, 17.1484, -45, 81.1484, -13, 81.1484, -45, -46.4063, -45, -46.8438, -13, -20, 51, -52, 51, -84, -77, -45.3906, -77, -46.4063, 31, -32, 23.1328, -46.2109, -104.883, -20, -105.867, -46.4688, -105.867, 49.5313, -104.883, 22, -191.297, -143.977, -104.531, -84)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 2), PackedInt32Array(5, 2, 1, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17, 18, 19), PackedInt32Array(9, 20, 5), PackedInt32Array(21, 9, 8, 22, 23), PackedInt32Array(22, 24, 23), PackedInt32Array(4, 25, 0), PackedInt32Array(0, 26, 1), PackedInt32Array(12, 4, 3), PackedInt32Array(27, 28, 15), PackedInt32Array(21, 23, 29, 14), PackedInt32Array(6, 30, 31, 7), PackedInt32Array(32, 33, 27), PackedInt32Array(18, 34, 19), PackedInt32Array(17, 35, 18), PackedInt32Array(15, 14, 29), PackedInt32Array(27, 15, 29, 36, 32), PackedInt32Array(37, 32, 36), PackedInt32Array(38, 13, 12, 3), PackedInt32Array(36, 39, 38, 3, 40, 37), PackedInt32Array(41, 37, 40), PackedInt32Array(41, 40, 7, 31)])
+vertices = PackedVector2Array(-10, 96.828125, 22, 96.828125, 324.3125, 163.60156, -197.60938, 187.36719, -42, 98.46094, 86, 32.828125, 310.60938, -91.15625, 22, 41, 54, 32.828125, 86, -87, -188.39844, -140.67969, -100, -87, -100, -31.75, 54, 32.507813, -4, 32.25, -42, 41, -10, 32.828125, -42, 32.507813, -10, -23, -4, -23, -42, 96.50781, -10, 96.50781, -75.28906, 94.21875, -76.5, 41, 22, -31.171875, 22, -31.476563, 52.132813, -31.179688, 52.132813, -23, -42, -31.171875, -42, -31.476563, -10, -31.171875, -10, -31.476563, -75.88281, -23, -75.88281, 41)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(2, 1, 5, 6), PackedInt32Array(5, 1, 7, 8), PackedInt32Array(6, 5, 9), PackedInt32Array(10, 6, 9, 11), PackedInt32Array(3, 10, 11, 12), PackedInt32Array(8, 13, 5), PackedInt32Array(14, 8, 7, 15, 16), PackedInt32Array(15, 17, 16), PackedInt32Array(14, 16, 18, 19), PackedInt32Array(4, 20, 0), PackedInt32Array(0, 21, 1), PackedInt32Array(22, 4, 3), PackedInt32Array(22, 3, 12, 23), PackedInt32Array(24, 25, 26, 27), PackedInt32Array(18, 28, 29, 30, 19), PackedInt32Array(19, 30, 31, 24, 27), PackedInt32Array(28, 18, 32, 12), PackedInt32Array(23, 12, 32, 33)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(323, -103, -201, -155, -211, 201, 338, 176)])
 agent_radius = 13.0
 
@@ -33,7 +34,7 @@ position = Vector2(-41, 25)
 texture = ExtResource("1_aes75")
 
 [node name="player" parent="." instance=ExtResource("2_dwq1p")]
-position = Vector2(3, -5)
+position = Vector2(29, 53)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 25.0
@@ -48,7 +49,7 @@ navigation_polygon = SubResource("NavigationPolygon_dwq1p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 position = Vector2(73, 54)
-tile_map_data = PackedByteArray("AAD///3/AAAFAAIAAAD///7/AAAEAAAAAAD+//7/AAACAAEAAAD8/wAAAAAEAAAAAAD7/wAAAAADAAAAAAD7//7/AAACAAEAAAD7//z/AAACAAEAAAD6//z/AAADAAIAAAD8//z/AAAEAAAAAAD9//z/AAAEAAAAAAD+//z/AAAEAAIAAAD9//7/AAAGAAQAAAD9/wAAAAAEAAAAAAD6//7/AAAFAAAAAAD7////AAACAAEAAAD6////AAADAAAAAAD8//7/AAAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///7/AAAHAAMAAAD6////AAADAAAAAAD8//7/AAAHAAMAAAD7//7/AAAIAAMAAAD9/wAAAAAFAAQAAAD7////AAAJAAQAAAD+//z/AAAJAAMAAAD9//z/AAAHAAMAAAD8//z/AAAJAAMAAAD7//z/AAAJAAMAAAD///3/AAAIAAMAAAD+//7/AAAJAAMAAAD8/wAAAAAJAAMAAAD7/wAAAAAEAAQAAAD///z/AAAHAAQAAAA=")
 tile_set = ExtResource("3_dwq1p")
 
 [node name="RA" parent="." instance=ExtResource("4_c7xoc")]
@@ -56,6 +57,7 @@ position = Vector2(-87, -162)
 
 [node name="Droppeditem" parent="." instance=ExtResource("5_gunkr")]
 position = Vector2(-186, -9)
+item_reference = ExtResource("6_im1w5")
 
 [node name="Droppeditem2" parent="." instance=ExtResource("5_gunkr")]
 position = Vector2(-205, 41)
@@ -68,9 +70,10 @@ item_reference = ExtResource("6_tt3vw")
 position = Vector2(-96, -62)
 
 [node name="toilet" parent="." instance=ExtResource("7_iye0w")]
-position = Vector2(-77, -95)
+position = Vector2(-49, -83)
 
 [node name="Fog Of War" type="Sprite2D" parent="."]
+visible = false
 light_mask = 2
 z_index = 25
 material = SubResource("ShaderMaterial_qxy0l")
@@ -79,4 +82,4 @@ scale = Vector2(37.955, 37.955)
 texture = ExtResource("10_qxy0l")
 
 [node name="UMDPISSER" parent="." instance=ExtResource("11_8moox")]
-position = Vector2(-53, -80)
+position = Vector2(-174, -65)

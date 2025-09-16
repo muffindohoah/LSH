@@ -1,6 +1,6 @@
 extends Node2D
 
-var power = 0.8
+const power: float = 0.8
 
 func _ready() -> void:
 	$Timer.start()
