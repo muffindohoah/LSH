@@ -8,7 +8,7 @@ var accel = 3
 var intoxication = 0
 
 var max_stamina = 100
-var stamina = 100 - intoxication
+var stamina = 100
 
 var can_move = true
 var can_sprint = true
@@ -19,11 +19,16 @@ var held_item:Item
 func _init() -> void:
 	Utils.PLAYER = self
 
+func _ready() -> void:
+	await get_tree().create_timer(0.3).timeout
+	
+
 func _physics_process(delta):
 	movement(delta)
 	interact(delta)
+	if !(Utils.GUI.sprint_meter == null):
+		Utils.GUI.sprint_meter.value = stamina
 	items(delta)
-	Utils.GUI.sprint_meter.value = stamina
 	move_and_slide()
 
 func movement(d):

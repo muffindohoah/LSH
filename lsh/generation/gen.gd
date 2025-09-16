@@ -30,6 +30,8 @@ func generate():
 	
 	#this will create the main snake
 	for i in range(dungeon_length):
+		if i == 0:
+			append_room_to(last_generated_room, load("res://generation/rooms/elevator.tscn").instantiate())
 		await append_room_to(last_generated_room)
 	
 	#this will create the 'sidequest'
