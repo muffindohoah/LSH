@@ -3,11 +3,11 @@ extends CharacterBody2D
 var is_open = false
 var initial_rotation = 0
 
-var force = 90
-var weight = 0.3
-var target_rotation = 0.0
+const force: int = 90
+const weight: float = 0.3
+var target_rotation: float = 0.0
 
-var health = 3
+var health: int = 3
 
 func _ready() -> void:
 	initial_rotation = rotation_degrees
