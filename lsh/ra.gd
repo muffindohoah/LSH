@@ -1,96 +1,109 @@
 extends CharacterBody2D
-var Friction = 0.8
+
+const Friction: float = 0.8
 var speed = 16
-@onready var vision_ray = $RayCast2D
-@onready var nav_agent = $NavigationAgent2D
-@onready var chase_timer = $Timer
-@onready var last_seen = global_position
+
+@onready var vision_ray: RayCast2D = $RayCast2D
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var chase_timer: Timer = $Timer
+@onready var last_seen: Vector2 = global_position
+
 var target
 var target_vision = false
 var next_point
 var ignore_nav = false
 var direction
 
-var chasing: bool = false
-var searching: bool = false
-var search_range:int = 100
-var roaming: bool = false
-var roam_range:int = 1000
+var chasing: 		bool = false
+var searching: 		bool = false
+var roaming: 		bool = false
+var roam_range:		int = 1000
+var search_range:	int = 100
 
+var traveling: bool = false
+var travel_pos: Vector2
 
 func _ready() -> void:
 	Utils.PISSALERT.connect(inbound_piss_alert)
+	return
 
-
-var traveling:bool = false
-var travel_pos:Vector2
-func inbound_piss_alert(pos):
+func inbound_piss_alert(pos) -> void:
 	print("PISSALERT")
 	traveling = true
 	nav_agent.set_target_position(pos)
 	travel_pos = pos
+	return
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		
 		chasing = true
 		chase_timer.start()
 		target = body
+	return
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		target = null
 		target_vision = false
 		start_searching()
+	return
 
-var search_iterations:int
 
-func _physics_process(delta: float) -> void:
+func __handle_traveling() -> void:
+	next_point = nav_agent.get_next_path_position()
+	direction = (next_point - global_position).normalized()
+	velocity += direction * speed
+	velocity.x *= Friction
+	velocity.y *= Friction
+	move_and_slide()
+	if nav_agent.is_navigation_finished():
+		traveling = false
+	return
 
-	if NavigationServer2D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
-		return
-	if traveling:
+func __handle_targeting() -> void:
+	vision_ray.set_target_position(vision_ray.to_local(target.global_position))
+		
+	if vision_ray.get_collider() == target and !Utils.PLAYER.is_hidden:
+		nav_agent.set_target_position(last_seen)
+		chasing = true
+		target_vision = true
+		last_seen = target.global_position
 		next_point = nav_agent.get_next_path_position()
 		direction = (next_point - global_position).normalized()
 		velocity += direction * speed
-		velocity.x *= Friction
-		velocity.y *= Friction
-		move_and_slide()
-		if nav_agent.is_navigation_finished():
-			traveling = false
-		return
-	
-	
-	
-	
-	
-
-	
-	if target:
-		vision_ray.set_target_position(vision_ray.to_local(target.global_position))
-		if vision_ray.get_collider() == target and !Utils.PLAYER.is_hidden:
-			nav_agent.set_target_position(last_seen)
-			chasing = true
-			target_vision = true
-			last_seen = target.global_position
-			next_point = nav_agent.get_next_path_position()
-			direction = (next_point - global_position).normalized()
-			velocity += direction * speed
-			searching = false
+		searching = false
+		
 		if nav_agent.is_navigation_finished() and !vision_ray.get_collider() == target:
 			target_vision = false
 			#start_searching()
+	return
+
+func __handle_searching() -> void:
+	var search_iterations: int = 0
+	var search_timer: Timer = $Timer3
+	if search_timer.time_left == 0:
+		search_timer.start()
+
+	if nav_agent.is_navigation_finished():
+		nav_agent.set_target_position(position + Vector2(randi_range(search_range,-search_range),randi_range(search_range,-search_range)))
+		search_iterations+=1
+
+	if search_iterations == 1:
+		pass
+	return
+
+func _physics_process(delta: float) -> void:
+	if NavigationServer2D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
+		return
+	
+	if traveling:
+		__handle_traveling()
+	
+	if target:
+		__handle_targeting()
 	
 	if searching:
-		var search_timer = $Timer3
-		if search_timer.time_left == 0:
-			search_timer.start()
-		if nav_agent.is_navigation_finished():
-			nav_agent.set_target_position(position + Vector2(randi_range(search_range,-search_range),randi_range(search_range,-search_range)))
-			search_iterations+=1
-		
-		if search_iterations == 1:
-			pass
+		__handle_searching()
 		
 	if roaming:
 		if nav_agent.is_navigation_finished():
@@ -109,10 +122,12 @@ func _physics_process(delta: float) -> void:
 	velocity.x *= Friction
 	velocity.y *= Friction
 	move_and_slide()
+	return
 
-func start_searching():
+func start_searching() -> void:
 	chasing = false
 	searching = true
+	return
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if chasing or searching or traveling:
