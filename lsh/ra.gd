@@ -29,6 +29,8 @@ func _ready() -> void:
 
 func inbound_piss_alert(pos) -> void:
 	print("PISSALERT")
+	if chasing:
+		return
 	traveling = true
 	nav_agent.set_target_position(pos)
 	travel_pos = pos

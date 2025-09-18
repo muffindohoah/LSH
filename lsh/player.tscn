@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxbseoit5c0a8"]
+[gd_scene load_steps=16 format=3 uid="uid://cxbseoit5c0a8"]
 
 [ext_resource type="Script" uid="uid://cqmp80drs6eo4" path="res://drunk_umd_student.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://de2oy8i03jfkc" path="res://9e7e6a795a38ffa95345b0f3e41446a3.jpg" id="2_epypp"]
 [ext_resource type="PackedScene" uid="uid://b7ibbe4kysc2j" path="res://gui.tscn" id="3_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://w6qof6ounrx" path="res://assets/player/player.png" id="4_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cwxqstvjy1xnq" path="res://assets/player/Player.png" id="4_hqtel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
 
@@ -23,32 +23,55 @@ use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
-atlas = ExtResource("4_hqtel")
-region = Rect2(0, 0, 122, 126)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
 atlas = ExtResource("4_hqtel")
-region = Rect2(122, 0, 122, 126)
+region = Rect2(0, 126, 122, 126)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
 atlas = ExtResource("4_hqtel")
+region = Rect2(122, 126, 122, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("4_hqtel")
+region = Rect2(366, 0, 122, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
+atlas = ExtResource("4_hqtel")
 region = Rect2(244, 0, 122, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
+atlas = ExtResource("4_hqtel")
+region = Rect2(122, 0, 122, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+atlas = ExtResource("4_hqtel")
+region = Rect2(0, 0, 122, 126)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b26j0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hqtel")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_sweqy")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2hs0m")
+}],
+"loop": false,
+"name": &"interact",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sweqy")
+"texture": SubResource("AtlasTexture_dw050")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b26j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ghd")
 }],
 "loop": true,
 "name": &"walk",
@@ -93,7 +116,7 @@ texture_scale = 0.29
 scale = Vector2(0.185, 0.185)
 sprite_frames = SubResource("SpriteFrames_b26j0")
 animation = &"walk"
-frame_progress = 0.3888047
+frame_progress = 0.7204313
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

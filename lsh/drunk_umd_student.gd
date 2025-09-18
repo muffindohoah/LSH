@@ -70,7 +70,7 @@ func movement(d):
 			current_speed -= accel 
 		
 		if is_moving:
-			$AnimatedSprite2D.play()
+			$AnimatedSprite2D.play("walk")
 			$AnimatedSprite2D.speed_scale = current_speed/walk_max_speed
 			
 			var sprite_target_rotation
@@ -89,6 +89,7 @@ var interactables_in_ranges = []
 func interact(d):
 	if Input.is_action_just_pressed("interact"):
 		if interactables_in_ranges.size() > 0:
+			$AnimatedSprite2D.play("interact")
 			interactables_in_ranges[0].interact()
 
 var prehidden_position:Vector2
