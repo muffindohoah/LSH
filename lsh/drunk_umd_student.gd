@@ -12,6 +12,7 @@ var stamina = 100
 
 var can_move = true
 var can_sprint = true
+var is_moving = false
 var is_hidden = false
 
 var held_item:Item
@@ -61,12 +62,36 @@ func movement(d):
 		
 		if input_dir != Vector2(0,0) and current_speed < current_max_speed:
 			current_speed += accel 
+			is_moving = true
 		elif input_dir == Vector2(0,0):
-			current_speed = 0
+			is_moving = false
+			current_speed = 0.0
 		elif current_speed > current_max_speed:
 			current_speed -= accel 
+		
+		if is_moving:
+			$AnimatedSprite2D.play()
+			$AnimatedSprite2D.speed_scale = current_speed/walk_max_speed
+			
+			var sprite_target_rotation
+			if input_dir.x:
+				sprite_target_rotation = -90
+			elif input_dir.x < 0:
+				sprite_target_rotation = 90
+			if input_dir.y:
+				sprite_target_rotation = -130
+			elif input_dir.y < 0:
+				sprite_target_rotation = 100
+			sprite_target_rotation += 36
+			
+			
+			sprite_target_rotation = self.get_angle_to(get_global_mouse_position())
+			sprite_target_rotation -= 1
+			$AnimatedSprite2D.rotation = sprite_target_rotation
+		else:
+			$AnimatedSprite2D.pause()
+		
 		velocity = input_dir.normalized() * current_speed
-
 
 
 var interactables_in_ranges = []
@@ -85,6 +110,7 @@ func hide_inside(body):
 	position = body.position
 	can_move = false
 	is_hidden = true
+	visible = false
 	
 
 func stop_hiding():
@@ -92,9 +118,10 @@ func stop_hiding():
 	position = prehidden_position
 	can_move = true
 	is_hidden = false
+	visible = true
 
 func items(d):
-	if Input.is_action_just_pressed("itemuse"):
+	if Input.is_action_just_pressed("itemuse") && held_item:
 		if held_item.use_scene:
 			var item_use_scene = held_item.use_scene.instantiate()
 			add_child(item_use_scene)

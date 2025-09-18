@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxbseoit5c0a8"]
+[gd_scene load_steps=13 format=3 uid="uid://cxbseoit5c0a8"]
 
 [ext_resource type="Script" uid="uid://cqmp80drs6eo4" path="res://drunk_umd_student.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://de2oy8i03jfkc" path="res://9e7e6a795a38ffa95345b0f3e41446a3.jpg" id="2_epypp"]
 [ext_resource type="PackedScene" uid="uid://b7ibbe4kysc2j" path="res://gui.tscn" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://w6qof6ounrx" path="res://assets/player/player.png" id="4_hqtel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
 
@@ -22,10 +23,43 @@ use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("4_hqtel")
+region = Rect2(0, 0, 122, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("4_hqtel")
+region = Rect2(122, 0, 122, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
+atlas = ExtResource("4_hqtel")
+region = Rect2(244, 0, 122, 126)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b26j0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hs0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="Drunk UMD Student" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_0e48y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.0408163, 0.0425532)
 texture = ExtResource("2_epypp")
 
@@ -54,6 +88,12 @@ shadow_enabled = true
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_i3pqv")
 texture_scale = 0.29
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.185, 0.185)
+sprite_frames = SubResource("SpriteFrames_b26j0")
+animation = &"walk"
+frame_progress = 0.3888047
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

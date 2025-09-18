@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci1dcocla1me6"
-path="res://.godot/imported/beergrounded.png-b7b17ac0163445fb92887115a2dbe17f.ctex"
+uid="uid://w6qof6ounrx"
+path="res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/beergrounded.png"
-dest_files=["res://.godot/imported/beergrounded.png-b7b17ac0163445fb92887115a2dbe17f.ctex"]
+source_file="res://assets/player/player.png"
+dest_files=["res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"]
 
 [params]
 
