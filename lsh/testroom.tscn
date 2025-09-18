@@ -82,4 +82,4 @@ scale = Vector2(37.955, 37.955)
 texture = ExtResource("10_qxy0l")
 
 [node name="UMDPISSER" parent="." instance=ExtResource("11_8moox")]
-position = Vector2(-174, -65)
+position = Vector2(-139, -152)

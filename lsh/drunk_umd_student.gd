@@ -74,16 +74,6 @@ func movement(d):
 			$AnimatedSprite2D.speed_scale = current_speed/walk_max_speed
 			
 			var sprite_target_rotation
-			if input_dir.x:
-				sprite_target_rotation = -90
-			elif input_dir.x < 0:
-				sprite_target_rotation = 90
-			if input_dir.y:
-				sprite_target_rotation = -130
-			elif input_dir.y < 0:
-				sprite_target_rotation = 100
-			sprite_target_rotation += 36
-			
 			
 			sprite_target_rotation = self.get_angle_to(get_global_mouse_position())
 			sprite_target_rotation -= 1
