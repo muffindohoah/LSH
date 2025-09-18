@@ -77,7 +77,32 @@ item_reference = ExtResource("6_tt3vw")
 is_random = true
 
 [node name="Droppeditem6" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-137, 37)
+position = Vector2(-138, 34)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem7" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-135, 68)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem8" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-176, 61)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem9" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-50, 81)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem10" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-96, 84)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem11" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-145, 102)
 item_reference = ExtResource("6_tt3vw")
 is_random = true
 
