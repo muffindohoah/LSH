@@ -113,7 +113,7 @@ func stop_hiding():
 	visible = true
 
 func items(d):
-	if Input.is_action_just_pressed("itemuse") && held_item:
+	if Input.is_action_just_pressed("itemuse") && held_item && held_item.can_be_used:
 		if held_item.use_scene:
 			var item_use_scene = held_item.use_scene.instantiate()
 			add_child(item_use_scene)

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cwxqstvjy1xnq" path="res://assets/player/Player.png" id="4_hqtel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
+radius = 6.0827627
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 34.0
