@@ -49,13 +49,25 @@ func movement(d):
 	
 	if can_move:
 		if Input.is_action_pressed("right"):
-			input_dir.x = 1
+			if intoxication < 30:
+				input_dir.x = 1
+			else:
+				input_dir.x = -1
 		if Input.is_action_pressed("left"):
-			input_dir.x = -1
+			if intoxication < 30:
+				input_dir.x = -1
+			else:
+				input_dir.x = 1
 		if Input.is_action_pressed("up"):
-			input_dir.y = -1
+			if intoxication < 30:
+				input_dir.y = -1
+			else:
+				input_dir.y = 1
 		if Input.is_action_pressed("down"):
-			input_dir.y = 1
+			if intoxication < 30:
+				input_dir.y = 1
+			else:
+				input_dir.y = -1
 		if Input.is_action_pressed("right") and Input.is_action_pressed("left"):
 			input_dir.x = 0
 		if Input.is_action_pressed("up") and Input.is_action_pressed("down"):
@@ -113,7 +125,7 @@ func stop_hiding():
 	visible = true
 
 func items(d):
-	if Input.is_action_just_pressed("itemuse") && held_item:
+	if Input.is_action_just_pressed("itemuse") && held_item && held_item.can_be_used:
 		if held_item.use_scene:
 			var item_use_scene = held_item.use_scene.instantiate()
 			add_child(item_use_scene)
