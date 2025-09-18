@@ -97,7 +97,6 @@ position = Vector2(-96, -62)
 position = Vector2(-41, -105)
 
 [node name="Fog Of War" type="Sprite2D" parent="."]
-visible = false
 light_mask = 2
 z_index = 25
 material = SubResource("ShaderMaterial_qxy0l")
