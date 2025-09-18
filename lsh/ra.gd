@@ -137,6 +137,8 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 			if "is_open" in body:
 				if !body.is_open:
 					bang_in(body)
+				else:
+					body.interact()
 			else:
 				bang_in(body)
 

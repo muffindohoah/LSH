@@ -33,10 +33,8 @@ func interact():
 	
 	print(target_rotation)
 	if target_rotation == initial_rotation:
-		modulate.b = 100
 		is_open = false
 	else:
-		modulate.b = 0
 		is_open = true
 	
 	#(Utils.PLAYER.position - self.position).normalized() * force

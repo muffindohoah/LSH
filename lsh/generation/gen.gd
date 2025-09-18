@@ -141,7 +141,7 @@ func has_overlapping_rooms(area:Area2D, exception) -> bool:
 	area.force_update_transform()
 	for i in area.get_overlapping_areas():
 		if i == exception:
-			print("Ran into exception: " + i.toString())
+			print("Ran into exception: " + str(i))
 			continue
 			
 		if i.is_in_group("room"):

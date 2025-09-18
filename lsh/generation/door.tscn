@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dguocq7ph6n0r"]
+[gd_scene load_steps=6 format=3 uid="uid://dguocq7ph6n0r"]
 
 [ext_resource type="Script" uid="uid://vv1epupd57t7" path="res://generation/door.gd" id="1_r5ica"]
+[ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="2_aodbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbhmb"]
 size = Vector2(32, 4)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jbhmb"]
-size = Vector2(32, 3)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ijft"]
+atlas = ExtResource("2_aodbp")
+region = Rect2(96, 0, 32, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jbhmb"]
 radius = 7.07107
@@ -20,8 +22,9 @@ position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_jbhmb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(16, 0)
-texture = SubResource("PlaceholderTexture2D_jbhmb")
+position = Vector2(16, 2)
+texture = SubResource("AtlasTexture_0ijft")
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

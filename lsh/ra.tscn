@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcg061r3gc3c4"]
+[gd_scene load_steps=10 format=3 uid="uid://dcg061r3gc3c4"]
 
 [ext_resource type="Script" uid="uid://dfjv378cf0pk0" path="res://ra.gd" id="1_02oe1"]
 [ext_resource type="AudioStream" uid="uid://clgwqblicqt3n" path="res://generation/Wood Breaking Sound Effect.mp3" id="2_bbrk0"]
@@ -15,6 +15,19 @@ size = Vector2(26, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bbrk0"]
 radius = 18.0
+
+[sub_resource type="Gradient" id="Gradient_tt3vw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.6927711)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ctws7"]
+gradient = SubResource("Gradient_tt3vw")
+width = 100
+height = 100
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="RA" type="CharacterBody2D"]
 script = ExtResource("1_02oe1")
@@ -63,6 +76,15 @@ volume_db = -25.25
 
 [node name="Timer3" type="Timer" parent="."]
 one_shot = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-2.2658412, -1.3700434)
+blend_mode = 2
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_ctws7")
+texture_scale = 0.01
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

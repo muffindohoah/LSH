@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b6mynbyrvl648"]
+[gd_scene load_steps=18 format=4 uid="uid://b6mynbyrvl648"]
 
 [ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
@@ -6,24 +6,40 @@
 [ext_resource type="PackedScene" uid="uid://dcg061r3gc3c4" path="res://ra.tscn" id="4_c7xoc"]
 [ext_resource type="PackedScene" uid="uid://binrejlhbshhj" path="res://items/droppeditem.tscn" id="5_gunkr"]
 [ext_resource type="PackedScene" uid="uid://dguocq7ph6n0r" path="res://generation/door.tscn" id="6_eqbee"]
-[ext_resource type="Resource" uid="uid://cnjn08kpa8jqa" path="res://assets/items/Bud_Light.tres" id="6_im1w5"]
-[ext_resource type="Resource" uid="uid://d2dq5vxm2ep2j" path="res://items/toiletcover.tres" id="6_tt3vw"]
+[ext_resource type="Resource" uid="uid://d2dq5vxm2ep2j" path="res://items/itemfiles/toiletcover.tres" id="6_tt3vw"]
 [ext_resource type="PackedScene" uid="uid://bkjjue4v8ogan" path="res://toilet.tscn" id="7_iye0w"]
 [ext_resource type="Shader" uid="uid://begwxca5xya52" path="res://fogofwar.gdshader" id="9_siutm"]
 [ext_resource type="Texture2D" uid="uid://bgq48inkuxhxt" path="res://assets/BLACK.png" id="10_qxy0l"]
 [ext_resource type="PackedScene" uid="uid://0jm22i4p8ymy" path="res://evils/umdpisser.tscn" id="11_8moox"]
+[ext_resource type="Shader" uid="uid://b76esa1pnayku" path="res://player.gdshader" id="12_im1w5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_im1w5"]
+shader = ExtResource("12_im1w5")
+shader_parameter/brightnessMult = 4.0
+shader_parameter/wiggleMult = 0.005
+shader_parameter/chromaticAberrationOffset = 0.001
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dwq1p"]
-vertices = PackedVector2Array(-10, 96.828125, 22, 96.828125, 324.3125, 163.60156, -197.60938, 187.36719, -42, 98.46094, 86, 32.828125, 310.60938, -91.15625, 22, 41, 54, 32.828125, 86, -87, -188.39844, -140.67969, -100, -87, -100, -31.75, 54, 32.507813, -4, 32.25, -42, 41, -10, 32.828125, -42, 32.507813, -10, -23, -4, -23, -42, 96.50781, -10, 96.50781, -75.28906, 94.21875, -76.5, 41, 22, -31.171875, 22, -31.476563, 52.132813, -31.179688, 52.132813, -23, -42, -31.171875, -42, -31.476563, -10, -31.171875, -10, -31.476563, -75.88281, -23, -75.88281, 41)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(2, 1, 5, 6), PackedInt32Array(5, 1, 7, 8), PackedInt32Array(6, 5, 9), PackedInt32Array(10, 6, 9, 11), PackedInt32Array(3, 10, 11, 12), PackedInt32Array(8, 13, 5), PackedInt32Array(14, 8, 7, 15, 16), PackedInt32Array(15, 17, 16), PackedInt32Array(14, 16, 18, 19), PackedInt32Array(4, 20, 0), PackedInt32Array(0, 21, 1), PackedInt32Array(22, 4, 3), PackedInt32Array(22, 3, 12, 23), PackedInt32Array(24, 25, 26, 27), PackedInt32Array(18, 28, 29, 30, 19), PackedInt32Array(19, 30, 31, 24, 27), PackedInt32Array(28, 18, 32, 12), PackedInt32Array(23, 12, 32, 33)])
+vertices = PackedVector2Array(-10, 75.11719, 22, 75.11719, 324.3125, 163.60156, -197.60938, 187.36719, -42, 75.921875, 86, 11.1171875, 86, -87, 310.60938, -91.15625, -188.39844, -140.67969, -76.14844, -87, -74.703125, -54.96875, -75.88281, -23, 22, 41, 54, 11.1171875, 54, 10.1484375, -4, 9.3828125, -42, 41, -10, 11.1171875, -42, 10.1484375, -10, -23, -4, -23, -42, 74.14844, -10, 74.14844, -74.703125, 73.03125, 22, -52.882813, 22, -53.84375, 51.96875, -52.9375, 52.132813, -41.820313, -42, -52.078125, -42, -53.84375, -10, -52.882813, -10, -53.84375, 52.132813, -23, -75.88281, 67, -74.96875, 67)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 2), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(3, 8, 9, 10, 11), PackedInt32Array(5, 2, 1, 12, 13), PackedInt32Array(13, 14, 5), PackedInt32Array(15, 13, 12, 16, 17), PackedInt32Array(16, 18, 17), PackedInt32Array(15, 17, 19, 20), PackedInt32Array(4, 21, 0), PackedInt32Array(0, 22, 1), PackedInt32Array(23, 4, 3), PackedInt32Array(24, 25, 26, 27), PackedInt32Array(19, 28, 29, 30, 20), PackedInt32Array(20, 30, 31, 24, 27, 32), PackedInt32Array(28, 19, 11, 10), PackedInt32Array(3, 11, 33), PackedInt32Array(23, 3, 33, 34)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(323, -103, -201, -155, -211, 201, 338, 176)])
 agent_radius = 13.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxy0l"]
 shader = ExtResource("9_siutm")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kosg"]
+shader = ExtResource("12_im1w5")
+shader_parameter/brightnessMult = 1.10000001639132
+shader_parameter/wiggleMult = 0.00129999996711
+shader_parameter/chromaticAberrationOffset = 0.00040999998975
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j5aph"]
+size = Vector2(2000, 2000)
+
 [node name="Testroom" type="Node2D"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_im1w5")
 
 [node name="Lhstilefloor" type="Sprite2D" parent="."]
 position = Vector2(-26, 39)
@@ -34,14 +50,14 @@ position = Vector2(-41, 25)
 texture = ExtResource("1_aes75")
 
 [node name="player" parent="." instance=ExtResource("2_dwq1p")]
-position = Vector2(29, 53)
+position = Vector2(-2, 57)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 25.0
-offset_top = 31.0
-offset_right = 65.0
-offset_bottom = 54.0
-text = "romromrom"
+offset_left = -147.0
+offset_top = 2.0
+offset_right = -51.0
+offset_bottom = 25.0
+text = "lootations"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-73, -54)
@@ -49,28 +65,36 @@ navigation_polygon = SubResource("NavigationPolygon_dwq1p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 position = Vector2(73, 54)
-tile_map_data = PackedByteArray("AAD///7/AAAHAAMAAAD6////AAADAAAAAAD8//7/AAAHAAMAAAD7//7/AAAIAAMAAAD9/wAAAAAFAAQAAAD7////AAAJAAQAAAD+//z/AAAJAAMAAAD9//z/AAAHAAMAAAD8//z/AAAJAAMAAAD7//z/AAAJAAMAAAD///3/AAAIAAMAAAD+//7/AAAJAAMAAAD8/wAAAAAJAAMAAAD7/wAAAAAEAAQAAAD///z/AAAHAAQAAAA=")
+tile_map_data = PackedByteArray("AAD9/wAAAAAHAAAAAAD+//z/AAAFAAEAAAD9//z/AAAJAAAAAAD8//z/AAAJAAAAAAD7//z/AAAGAAIAAAD///z/AAAIAAIAAAD///3/AAAGAAEAAAD///7/AAAJAAAAAAD7//7/AAAJAAEAAAD7/wAAAAAEAAEAAAD8/wAAAAAJAAAAAAD+//7/AAAJAAAAAAD8//7/AAAJAAAAAAD7////AAAEAAAAAAA=")
 tile_set = ExtResource("3_dwq1p")
 
 [node name="RA" parent="." instance=ExtResource("4_c7xoc")]
 position = Vector2(-87, -162)
 
-[node name="Droppeditem" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-186, -9)
-item_reference = ExtResource("6_im1w5")
-
-[node name="Droppeditem2" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-205, 41)
-
 [node name="Droppeditem3" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-95, -31)
+position = Vector2(-81, -91)
 item_reference = ExtResource("6_tt3vw")
+
+[node name="Droppeditem4" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-104, 37)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem5" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-71, 37)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem6" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-137, 37)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
 
 [node name="Door" parent="." instance=ExtResource("6_eqbee")]
 position = Vector2(-96, -62)
 
 [node name="toilet" parent="." instance=ExtResource("7_iye0w")]
-position = Vector2(-49, -83)
+position = Vector2(-41, -105)
 
 [node name="Fog Of War" type="Sprite2D" parent="."]
 visible = false
@@ -83,3 +107,8 @@ texture = ExtResource("10_qxy0l")
 
 [node name="UMDPISSER" parent="." instance=ExtResource("11_8moox")]
 position = Vector2(-139, -152)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6kosg")
+position = Vector2(-15, 52)
+texture = SubResource("PlaceholderTexture2D_j5aph")

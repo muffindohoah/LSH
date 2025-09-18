@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7ibbe4kysc2j"]
+[gd_scene load_steps=9 format=3 uid="uid://b7ibbe4kysc2j"]
 
 [ext_resource type="Script" uid="uid://ja5ib180yc3e" path="res://gui.gd" id="1_80edf"]
 [ext_resource type="Texture2D" uid="uid://dp826okhul0sm" path="res://assets/items/beerpholder.png" id="2_6lon5"]
+[ext_resource type="Shader" uid="uid://b76esa1pnayku" path="res://player.gdshader" id="3_q8o8l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lon5"]
 bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
@@ -15,6 +16,15 @@ bg_color = Color(0.0414, 0.06327, 0.09, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80edf"]
 bg_color = Color(0.903598, 0.903598, 0.903598, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cor1f"]
+shader = ExtResource("3_q8o8l")
+shader_parameter/brightnessMult = 0.70000001043084
+shader_parameter/wiggleMult = 0.00219999994434
+shader_parameter/chromaticAberrationOffset = 0.00040999998975
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u77ya"]
+size = Vector2(2000, 2000)
 
 [node name="GUI" type="Control"]
 texture_filter = 1
@@ -59,3 +69,8 @@ grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_k6omp")
 theme_override_styles/fill = SubResource("StyleBoxFlat_80edf")
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cor1f")
+position = Vector2(441, 149)
+texture = SubResource("PlaceholderTexture2D_u77ya")

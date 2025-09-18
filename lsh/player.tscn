@@ -10,13 +10,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 34.0
 
-[sub_resource type="Gradient" id="Gradient_tt3vw"]
+[sub_resource type="Gradient" id="Gradient_hqtel"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.6927711)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_i3pqv"]
-gradient = SubResource("Gradient_tt3vw")
+gradient = SubResource("Gradient_hqtel")
 width = 1000
 height = 1000
 use_hdr = true

@@ -27,6 +27,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	movement(delta)
 	interact(delta)
+	
 	if !(Utils.GUI.sprint_meter == null):
 		Utils.GUI.sprint_meter.value = stamina
 	items(delta)
