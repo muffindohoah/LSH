@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://86liqhq16bsx"]
+
+[ext_resource type="Script" uid="uid://bnlvowmwy3e7o" path="res://generation/furniture/furniture.gd" id="1_5la1i"]
+[ext_resource type="AudioStream" uid="uid://bn8jlkjbjmsue" path="res://generation/furniture/lootopen.mp3" id="2_ktr17"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7ww7b"]
+size = Vector2(15, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqn78"]
+size = Vector2(12, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktr17"]
+radius = 2.236068
+
+[node name="Furniture" type="StaticBody2D"]
+texture_filter = 1
+script = ExtResource("1_5la1i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_7ww7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hqn78")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ktr17")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ktr17")

@@ -25,13 +25,19 @@ func _ready() -> void:
 	
 
 func _physics_process(delta):
+	status_effects(delta)
 	movement(delta)
 	interact(delta)
-	
 	if !(Utils.GUI.sprint_meter == null):
 		Utils.GUI.sprint_meter.value = stamina
 	items(delta)
 	move_and_slide()
+
+func status_effects(d):
+	current_max_speed -= (intoxication*20)
+	if intoxication > 0:
+		intoxication -= 0.1*d
+	print(intoxication)
 
 func movement(d):
 	var input_dir:Vector2 = Vector2(0,0)
@@ -49,30 +55,20 @@ func movement(d):
 	
 	if can_move:
 		if Input.is_action_pressed("right"):
-			if intoxication < 30:
 				input_dir.x = 1
-			else:
-				input_dir.x = -1
 		if Input.is_action_pressed("left"):
-			if intoxication < 30:
 				input_dir.x = -1
-			else:
-				input_dir.x = 1
 		if Input.is_action_pressed("up"):
-			if intoxication < 30:
 				input_dir.y = -1
-			else:
-				input_dir.y = 1
 		if Input.is_action_pressed("down"):
-			if intoxication < 30:
 				input_dir.y = 1
-			else:
-				input_dir.y = -1
 		if Input.is_action_pressed("right") and Input.is_action_pressed("left"):
 			input_dir.x = 0
 		if Input.is_action_pressed("up") and Input.is_action_pressed("down"):
 			input_dir.y = 0
 		
+		
+		current_max_speed += (intoxication)
 		if input_dir != Vector2(0,0) and current_speed < current_max_speed:
 			current_speed += accel 
 			is_moving = true
@@ -93,6 +89,11 @@ func movement(d):
 			$AnimatedSprite2D.rotation = sprite_target_rotation
 		else:
 			$AnimatedSprite2D.pause()
+		
+		if intoxication > 30:
+			input_dir *= -1
+		
+		
 		
 		velocity = input_dir.normalized() * current_speed
 

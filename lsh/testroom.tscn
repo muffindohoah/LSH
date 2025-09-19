@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b6mynbyrvl648"]
+[gd_scene load_steps=18 format=4 uid="uid://b6mynbyrvl648"]
 
 [ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bgq48inkuxhxt" path="res://assets/BLACK.png" id="10_qxy0l"]
 [ext_resource type="PackedScene" uid="uid://0jm22i4p8ymy" path="res://evils/umdpisser.tscn" id="11_8moox"]
 [ext_resource type="Shader" uid="uid://b76esa1pnayku" path="res://player.gdshader" id="12_im1w5"]
+[ext_resource type="PackedScene" uid="uid://86liqhq16bsx" path="res://generation/furniture/furniture.tscn" id="13_j5aph"]
+[ext_resource type="Resource" uid="uid://bhjvp0q1mlh5q" path="res://generation/furniture/furniturefiles/closet.tres" id="14_j5aph"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_im1w5"]
 shader = ExtResource("12_im1w5")
@@ -37,7 +39,7 @@ position = Vector2(-26, 39)
 texture = ExtResource("1_aes75")
 
 [node name="Lhstilefloor2" type="Sprite2D" parent="."]
-position = Vector2(-41, 25)
+position = Vector2(-26, 7)
 texture = ExtResource("1_aes75")
 
 [node name="player" parent="." instance=ExtResource("2_dwq1p")]
@@ -122,3 +124,11 @@ texture = ExtResource("10_qxy0l")
 
 [node name="UMDPISSER" parent="." instance=ExtResource("11_8moox")]
 position = Vector2(-139, -152)
+
+[node name="Furniture" parent="." instance=ExtResource("13_j5aph")]
+position = Vector2(50, 72)
+furniture_reference = ExtResource("14_j5aph")
+
+[node name="Furniture2" parent="." instance=ExtResource("13_j5aph")]
+position = Vector2(61, 43)
+furniture_reference = ExtResource("14_j5aph")
