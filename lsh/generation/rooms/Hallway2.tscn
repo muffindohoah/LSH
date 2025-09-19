@@ -1,29 +1,25 @@
-[gd_scene load_steps=6 format=4 uid="uid://bfup0dui2gjwo"]
+[gd_scene load_steps=6 format=4 uid="uid://dlag5pajx5tkh"]
 
-[ext_resource type="Script" path="res://generation/roombase.gd" id="1_csiw4"]
-[ext_resource type="PackedScene" uid="uid://e2b0c1thmwn0" path="res://generation/connector.tscn" id="2_bod43"]
-[ext_resource type="PackedScene" uid="uid://dguocq7ph6n0r" path="res://generation/door.tscn" id="2_klqqs"]
-[ext_resource type="TileSet" uid="uid://c13imbptut0kv" path="res://generation/rooms/roombase2.tres" id="3_n3jp8"]
+[ext_resource type="Script" uid="uid://b3hqqrttr2i1u" path="res://generation/roombase.gd" id="1_hxixu"]
+[ext_resource type="PackedScene" uid="uid://dguocq7ph6n0r" path="res://generation/door.tscn" id="2_7ld48"]
+[ext_resource type="PackedScene" uid="uid://e2b0c1thmwn0" path="res://generation/connector.tscn" id="3_r4ld5"]
+[ext_resource type="TileSet" uid="uid://c13imbptut0kv" path="res://generation/rooms/roombase2.tres" id="4_yaocy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwb58"]
-size = Vector2(288, 105)
+size = Vector2(305, 128)
 
 [node name="Roombase" type="Area2D" groups=["room"]]
 collision_layer = 128
 collision_mask = 128
-script = ExtResource("1_csiw4")
+script = ExtResource("1_hxixu")
 bounds = Vector2(288, 105)
 bounds_offset = Vector2(-16, -6.5)
-connectors = [Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(128, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":true,"up":false,"down":false)
-, Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-160, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":true,"right":false,"up":false,"down":false)
-, Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, -32),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":true,"down":false)
+connectors = [Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(160, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":true,"up":false,"down":false)
+, Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-96, 64),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
+, Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-96, -64),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":true,"down":false)
 ]
 connector_distances = {
 null: Vector2(-16, -42),
-Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-160, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":true,"right":false,"up":false,"down":false)
-: Vector2(-104, 32),
-Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 40),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
-: Vector2(0, 40),
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(128, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":true,"up":false,"down":false)
 : Vector2(104, 32),
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(128, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":true,"up":false,"down":false)
@@ -66,6 +62,12 @@ Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_
 : Vector2(-160, 0),
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, -32),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":true,"down":false)
 : Vector2(-16, -42),
+Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(160, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":true,"up":false,"down":false)
+: Vector2(128, 0),
+Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-96, 64),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
+: Vector2(-160, 0),
+Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-96, -64),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":true,"down":false)
+: Vector2(-16, -32),
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(128, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":true,"up":false,"down":false)
 : Vector2(128, 0),
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, -42),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":true,"down":false)
@@ -111,34 +113,50 @@ Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(128, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":true,"up":false,"down":false)
 : Vector2(128, 0),
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, -42),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":true,"down":false)
-: Vector2(0, -36)
+: Vector2(0, -36),
+Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-160, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":true,"right":false,"up":false,"down":false)
+: Vector2(-104, 32),
+Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 40),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
+: Vector2(0, 40)
 }
 
 [node name="Bounds" type="CollisionShape2D" parent="."]
-position = Vector2(-16, -6.5)
+position = Vector2(7.5, 0)
 shape = SubResource("RectangleShape2D_iwb58")
 
-[node name="Door" parent="." instance=ExtResource("2_klqqs")]
-position = Vector2(-32, -60)
+[node name="Door" parent="." instance=ExtResource("2_7ld48")]
+position = Vector2(32, 34)
+
+[node name="Door2" parent="." instance=ExtResource("2_7ld48")]
+position = Vector2(64, -27)
+rotation = 3.1415927
 
 [node name="Connectors" type="Node2D" parent="."]
 
-[node name="Right" parent="Connectors" instance=ExtResource("2_bod43")]
-position = Vector2(128, 0)
+[node name="Right" parent="Connectors" instance=ExtResource("3_r4ld5")]
+position = Vector2(160, 0)
 right = true
 
-[node name="Left" parent="Connectors" instance=ExtResource("2_bod43")]
-position = Vector2(-160, 0)
-left = true
+[node name="Down" parent="Connectors" instance=ExtResource("3_r4ld5")]
+position = Vector2(-96, 64)
+down = true
 
-[node name="Up" parent="Connectors" instance=ExtResource("2_bod43")]
-position = Vector2(-16, -32)
+[node name="Up" parent="Connectors" instance=ExtResource("3_r4ld5")]
+position = Vector2(-96, -64)
 up = true
 
+[node name="roomTwo" parent="Connectors" instance=ExtResource("3_r4ld5")]
+position = Vector2(32, -25)
+up = true
+
+[node name="roomOne" parent="Connectors" instance=ExtResource("3_r4ld5")]
+position = Vector2(32, 32)
+down = true
+
 [node name="Walls&Pits" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD7//7/AAAJAAAAAAD8//7/AAAJAAAAAAD9//7/AAAJAAAAAAD+//7/AAAJAAAAAAAAAP7/AAAJAAAAAAABAP7/AAAJAAAAAAACAP7/AAAJAAAAAAADAP//AAAAAAEAAAADAAAAAAAHAAAAAAD7/wAAAAAJAAAAAAD7////AAAAAAEAAAD8////AAAAAAEAAAD9////AAAAAAEAAAD+////AAAAAAEAAAD/////AAAAAAEAAAAAAP//AAAAAAEAAAABAP//AAAAAAEAAAACAP//AAAAAAEAAAACAAAAAAAJAAAAAAABAAAAAAAJAAAAAAAAAAAAAAAJAAAAAAD//wAAAAAJAAAAAAD+/wAAAAAJAAAAAAD9/wAAAAAJAAAAAAD8/wAAAAAJAAAAAAD6//7/AAAGAAAAAAD6/wAAAAAGAAAAAAADAP7/AAAHAAAAAAA=")
-tile_set = ExtResource("3_n3jp8")
+tile_map_data = PackedByteArray("AAD8////AAAAAAEAAAD9////AAAAAAEAAAD+////AAAAAAEAAAAEAAAAAAAAAAEAAAADAAAAAAAAAAEAAAACAAAAAAAAAAEAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAD//wAAAAAAAAEAAAD+/wAAAAAAAAEAAAD9/wAAAAAAAAEAAAD8/wAAAAAAAAEAAAD/////AAAAAAEAAAAAAP//AAAAAAEAAAABAP//AAAAAAEAAAACAP//AAAAAAEAAAADAP//AAAAAAEAAAAEAP//AAAAAAEAAAD9/wEAAAAAAAEAAAD8/wEAAAAAAAEAAAD8//7/AAAAAAEAAAD9//7/AAAAAAEAAAA=")
+tile_set = ExtResource("4_yaocy")
 
 [node name="Floor" type="TileMapLayer" parent="Walls&Pits"]
-tile_map_data = PackedByteArray("AAD8//7/AAAAAAEAAAD9//7/AAAAAAEAAAD+//7/AAAAAAEAAAABAP7/AAAAAAEAAAACAP7/AAAAAAEAAAAAAP7/AAAAAAEAAAADAP7/AAAAAAEAAAD7//7/AAAAAAEAAAD///7/AAAAAAEAAAA=")
-tile_set = ExtResource("3_n3jp8")
+tile_map_data = PackedByteArray("AAAEAP//AAAJAAAAAAADAP//AAAJAAAAAAACAP//AAAJAAAAAAAAAP//AAAJAAAAAAD/////AAAJAAAAAAD+////AAAJAAAAAAD+/wEAAAAJAAAAAAD//wEAAAAJAAAAAAAAAAEAAAAJAAAAAAACAAEAAAAJAAAAAAADAAEAAAAJAAAAAAAEAAEAAAAJAAAAAAD9////AAAGAAIAAAD9//7/AAAJAAEAAAD9/wEAAAAJAAEAAAD7/wEAAAAGAAEAAAD7/wAAAAAGAAEAAAD7////AAAGAAEAAAD7//7/AAAGAAEAAAABAAEAAAADAAMAAAA=")
+tile_set = ExtResource("4_yaocy")

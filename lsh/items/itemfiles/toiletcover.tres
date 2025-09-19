@@ -8,4 +8,5 @@ script = ExtResource("1_tidev")
 name = "Toilet Cover"
 inventory_texture = ExtResource("1_wbt0s")
 dropped_texture = ExtResource("1_wbt0s")
+can_be_used = false
 metadata/_custom_type_script = "uid://mnymuefnfn1u"

@@ -23,6 +23,7 @@ Loot="*res://loot.gd"
 [display]
 
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [global_group]
 

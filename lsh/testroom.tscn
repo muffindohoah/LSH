@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b6mynbyrvl648"]
+[gd_scene load_steps=16 format=4 uid="uid://b6mynbyrvl648"]
 
 [ext_resource type="Texture2D" uid="uid://ccm7xvq5a1fab" path="res://assets/rooms/lhstilefloor.png" id="1_aes75"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="2_dwq1p"]
@@ -27,15 +27,6 @@ agent_radius = 13.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxy0l"]
 shader = ExtResource("9_siutm")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kosg"]
-shader = ExtResource("12_im1w5")
-shader_parameter/brightnessMult = 1.10000001639132
-shader_parameter/wiggleMult = 0.00129999996711
-shader_parameter/chromaticAberrationOffset = 0.00040999998975
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j5aph"]
-size = Vector2(2000, 2000)
 
 [node name="Testroom" type="Node2D"]
 texture_filter = 1
@@ -86,7 +77,32 @@ item_reference = ExtResource("6_tt3vw")
 is_random = true
 
 [node name="Droppeditem6" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-137, 37)
+position = Vector2(-138, 34)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem7" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-135, 68)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem8" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-176, 61)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem9" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-50, 81)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem10" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-96, 84)
+item_reference = ExtResource("6_tt3vw")
+is_random = true
+
+[node name="Droppeditem11" parent="." instance=ExtResource("5_gunkr")]
+position = Vector2(-145, 102)
 item_reference = ExtResource("6_tt3vw")
 is_random = true
 
@@ -97,7 +113,6 @@ position = Vector2(-96, -62)
 position = Vector2(-41, -105)
 
 [node name="Fog Of War" type="Sprite2D" parent="."]
-visible = false
 light_mask = 2
 z_index = 25
 material = SubResource("ShaderMaterial_qxy0l")
@@ -107,8 +122,3 @@ texture = ExtResource("10_qxy0l")
 
 [node name="UMDPISSER" parent="." instance=ExtResource("11_8moox")]
 position = Vector2(-139, -152)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_6kosg")
-position = Vector2(-15, 52)
-texture = SubResource("PlaceholderTexture2D_j5aph")
