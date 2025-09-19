@@ -16,13 +16,13 @@ size = Vector2(26, 26)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bbrk0"]
 radius = 18.0
 
-[sub_resource type="Gradient" id="Gradient_tt3vw"]
+[sub_resource type="Gradient" id="Gradient_ctws7"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.6927711)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ctws7"]
-gradient = SubResource("Gradient_tt3vw")
+gradient = SubResource("Gradient_ctws7")
 width = 100
 height = 100
 use_hdr = true

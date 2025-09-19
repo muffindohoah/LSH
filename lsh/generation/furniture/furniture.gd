@@ -13,6 +13,9 @@ func update_from_reference():
 	$CollisionShape2D.shape.size = furniture_reference.collision_vector
 	if furniture_reference.openable:
 		add_to_group("interactable")
+	if furniture_reference.emits_light:
+		$PointLight2D.enabled = true
+		$PointLight2D.texture_scale = furniture_reference.light_size
 	return true
 
 func interact():

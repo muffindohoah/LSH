@@ -126,7 +126,7 @@ texture = ExtResource("10_qxy0l")
 position = Vector2(-139, -152)
 
 [node name="Furniture" parent="." instance=ExtResource("13_j5aph")]
-position = Vector2(50, 72)
+position = Vector2(130, -3)
 furniture_reference = ExtResource("14_j5aph")
 
 [node name="Furniture2" parent="." instance=ExtResource("13_j5aph")]

@@ -15,4 +15,5 @@ base_texture = SubResource("PlaceholderTexture2D_7qy2i")
 collision_vector = Vector2(20, 20)
 openable = true
 opened_texture = SubResource("PlaceholderTexture2D_oq5ss")
+emits_light = true
 metadata/_custom_type_script = "uid://durncaglur0o2"

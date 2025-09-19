@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://86liqhq16bsx"]
+[gd_scene load_steps=8 format=3 uid="uid://86liqhq16bsx"]
 
 [ext_resource type="Script" uid="uid://bnlvowmwy3e7o" path="res://generation/furniture/furniture.gd" id="1_5la1i"]
 [ext_resource type="AudioStream" uid="uid://bn8jlkjbjmsue" path="res://generation/furniture/lootopen.mp3" id="2_ktr17"]
@@ -7,10 +7,22 @@
 size = Vector2(15, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqn78"]
-size = Vector2(12, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktr17"]
 radius = 2.236068
+
+[sub_resource type="Gradient" id="Gradient_tt3vw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.6927711)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ktr17"]
+gradient = SubResource("Gradient_tt3vw")
+width = 100
+height = 100
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Furniture" type="StaticBody2D"]
 texture_filter = 1
@@ -29,3 +41,11 @@ stream = ExtResource("2_ktr17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ktr17")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+blend_mode = 2
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_ktr17")
+texture_scale = 0.77
