@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cankcva6sody6"]
+[gd_scene load_steps=7 format=3 uid="uid://cankcva6sody6"]
 
 [ext_resource type="Script" uid="uid://dnq7d2kcib4os" path="res://generation/gen.gd" id="1_tncbi"]
-[ext_resource type="PackedScene" uid="uid://dcg061r3gc3c4" path="res://ra.tscn" id="3_nvtmx"]
 [ext_resource type="Shader" uid="uid://begwxca5xya52" path="res://fogofwar.gdshader" id="4_nws3s"]
 [ext_resource type="Texture2D" uid="uid://bgq48inkuxhxt" path="res://assets/BLACK.png" id="5_6ijxu"]
 
@@ -72,9 +71,6 @@ offset_top = -162.0
 offset_right = -252.0
 offset_bottom = -139.0
 text = "SEED"
-
-[node name="RA" parent="." instance=ExtResource("3_nvtmx")]
-position = Vector2(-83, 110)
 
 [node name="Fog Of War" type="Sprite2D" parent="."]
 light_mask = 2

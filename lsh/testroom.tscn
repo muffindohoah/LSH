@@ -65,7 +65,7 @@ tile_set = ExtResource("3_dwq1p")
 position = Vector2(-87, -162)
 
 [node name="Droppeditem3" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-81, -91)
+position = Vector2(-38, -34)
 item_reference = ExtResource("6_tt3vw")
 
 [node name="Droppeditem4" parent="." instance=ExtResource("5_gunkr")]
@@ -75,36 +75,6 @@ is_random = true
 
 [node name="Droppeditem5" parent="." instance=ExtResource("5_gunkr")]
 position = Vector2(-71, 37)
-item_reference = ExtResource("6_tt3vw")
-is_random = true
-
-[node name="Droppeditem6" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-138, 34)
-item_reference = ExtResource("6_tt3vw")
-is_random = true
-
-[node name="Droppeditem7" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-135, 68)
-item_reference = ExtResource("6_tt3vw")
-is_random = true
-
-[node name="Droppeditem8" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-176, 61)
-item_reference = ExtResource("6_tt3vw")
-is_random = true
-
-[node name="Droppeditem9" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-50, 81)
-item_reference = ExtResource("6_tt3vw")
-is_random = true
-
-[node name="Droppeditem10" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-96, 84)
-item_reference = ExtResource("6_tt3vw")
-is_random = true
-
-[node name="Droppeditem11" parent="." instance=ExtResource("5_gunkr")]
-position = Vector2(-145, 102)
 item_reference = ExtResource("6_tt3vw")
 is_random = true
 
@@ -126,7 +96,7 @@ texture = ExtResource("10_qxy0l")
 position = Vector2(-139, -152)
 
 [node name="Furniture" parent="." instance=ExtResource("13_j5aph")]
-position = Vector2(130, -3)
+position = Vector2(61, 19)
 furniture_reference = ExtResource("14_j5aph")
 
 [node name="Furniture2" parent="." instance=ExtResource("13_j5aph")]

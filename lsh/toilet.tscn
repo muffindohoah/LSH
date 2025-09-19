@@ -9,7 +9,7 @@ size = Vector2(20, 23)
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rurb"]
 radius = 7.0
 
-[node name="toilet" type="StaticBody2D" groups=["interactable"]]
+[node name="toilet" type="StaticBody2D" groups=["destructible", "interactable"]]
 script = ExtResource("1_ayuo3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

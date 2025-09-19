@@ -1,19 +1,66 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4hxwg2yuvjk4"]
+[gd_scene load_steps=13 format=3 uid="uid://b4hxwg2yuvjk4"]
 
-[ext_resource type="Script" uid="uid://b3hqqrttr2i1u" path="res://generation/roombase.gd" id="1_y4xc0"]
+[ext_resource type="Script" uid="uid://dhamjts2lb4xg" path="res://generation/rooms/elevator.gd" id="1_12jhf"]
 [ext_resource type="PackedScene" uid="uid://e2b0c1thmwn0" path="res://generation/connector.tscn" id="2_0mbwe"]
 [ext_resource type="PackedScene" uid="uid://cxbseoit5c0a8" path="res://player.tscn" id="3_0mbwe"]
 [ext_resource type="TileSet" uid="uid://c13imbptut0kv" path="res://generation/rooms/roombase2.tres" id="3_12jhf"]
+[ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="4_12jhf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwb58"]
 size = Vector2(71, 39)
+
+[sub_resource type="Animation" id="Animation_1xw7o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, 68)]
+}
+
+[sub_resource type="Animation" id="Animation_4vlhw"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.4622872, 1),
+"update": 0,
+"values": [Vector2(-16, 68), Vector2(16, 68)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hpqel"]
+_data = {
+&"RESET": SubResource("Animation_1xw7o"),
+&"open": SubResource("Animation_4vlhw")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_12jhf"]
+polygon = PackedVector2Array(-16, -4, 23, -4, 23, 4, -16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26s3e"]
+size = Vector2(32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxbvx"]
+atlas = ExtResource("4_12jhf")
+region = Rect2(256, 128, 32, 8)
 
 [node name="Roombase2" type="Area2D" groups=["room"]]
 z_index = -1
 texture_filter = 1
 collision_layer = 128
 collision_mask = 128
-script = ExtResource("1_y4xc0")
+script = ExtResource("1_12jhf")
 bounds = Vector2(71, 39)
 bounds_offset = Vector2(-3.5, 52.5)
 connectors = [Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, 64),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
@@ -67,7 +114,9 @@ Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-48, 96),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
 : Vector2(-48, 96),
 Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, 96),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
-: Vector2(-16, 96)
+: Vector2(-16, 96),
+Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-16, 64),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://generation/connector.gd"),"left":false,"right":false,"up":false,"down":true)
+: Vector2(-16, 64)
 }
 
 [node name="Bounds" type="CollisionShape2D" parent="."]
@@ -83,6 +132,26 @@ position = Vector2(6, 52)
 position = Vector2(-16, 64)
 down = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatableBody2D/Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_hpqel")
+}
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+light_mask = 1023
+visibility_layer = 1023
+position = Vector2(-16, 68)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatableBody2D"]
+occluder = SubResource("OccluderPolygon2D_12jhf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_26s3e")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = SubResource("AtlasTexture_vxbvx")
+
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -2
 position = Vector2(32, 0)
@@ -92,3 +161,5 @@ tile_set = ExtResource("3_12jhf")
 [node name="wall" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray(0, 0, 255, 255, 1, 0, 0, 0, 8, 0, 3, 0, 0, 0, 254, 255, 1, 0, 0, 0, 7, 0, 3, 0, 0, 0, 254, 255, 2, 0, 0, 0, 7, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 9, 0, 3, 0, 0, 0, 0, 0, 2, 0, 0, 0, 9, 0, 4, 0, 0, 0)
 tile_set = ExtResource("3_12jhf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
