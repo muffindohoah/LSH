@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Furniture" load_steps=4 format=3 uid="uid://bhjvp0q1mlh5q"]
+
+[ext_resource type="Script" uid="uid://durncaglur0o2" path="res://generation/furniture/furnitureclass.gd" id="1_7qy2i"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7qy2i"]
+size = Vector2(20, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oq5ss"]
+size = Vector2(30, 30)
+
+[resource]
+script = ExtResource("1_7qy2i")
+name = "Placeholder"
+base_texture = SubResource("PlaceholderTexture2D_7qy2i")
+collision_vector = Vector2(20, 20)
+openable = true
+opened_texture = SubResource("PlaceholderTexture2D_oq5ss")
+emits_light = true
+metadata/_custom_type_script = "uid://durncaglur0o2"
