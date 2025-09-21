@@ -4,7 +4,7 @@ extends Node2D
 @onready var completed_rooms = []
 @onready var roomcoll_area: Area2D = $Area2D
 
-# TODO: make this a constant asap
+# TODO: make this a constant asap. this will be changed as the game progresses? 
 @export var dungeon_length: int = 3
 
 @export_category("Sidequests")
@@ -13,11 +13,11 @@ extends Node2D
 
 var last_generated_room = null
 
-
-const _DOES_ROOM_FIT__TIMER_TIMEOUT_: float = 0.4
+const _DOES_ROOM_FIT__TIMER_TIMEOUT_: float = 0.03
 
 func _ready() -> void:
 	# TODO: Not sure if any of this is necessary. randomize is ran on project start, and seeds aren't useful without a seed input
+	# this will be called several times as we regenerate the level. seeds are 'good practice'. its unneccessary though yeah.
 	randomize()
 	var random_seed: int = randi()
 	$Label.text = "Seed: " + str(random_seed)
@@ -33,13 +33,28 @@ func _ready() -> void:
 
 func generate():
 	
-	#this will create the main snake
+	#this will create the main snake. at the end we will place the objective.
 	for i in range(dungeon_length):
 		if i == 0:
-			append_room_to(last_generated_room, load("res://generation/rooms/elevator.tscn").instantiate())
+			append_room_to(last_generated_room, load("res://generation/elevator.tscn").instantiate())
 		await append_room_to(last_generated_room)
 	
-	#this will create the 'sidequest'
+	
+	#create random shit to make the map feel natural. this does not have to make logical sense.
+	for i in randi_range(0, completed_rooms.size()):
+		await append_room_to(completed_rooms.pick_random())
+	
+	#fill gaps
+	var completed_rooms_duplicate = completed_rooms.duplicate(true)
+	for completed_room in completed_rooms_duplicate:
+		for connector in completed_room.connectors:
+			if !connector.taken:
+				if connector.left or connector.right:
+					append_room_to(completed_room, load("res://generation/blockoffs/blockoffhoriz.tscn").instantiate())
+				elif connector.up or connector.down:
+					append_room_to(completed_room, load("res://generation/blockoffs/blockoffvert.tscn").instantiate())
+	
+	#this will create the 'sidequest'. this will not be used. no time. 
 	if sidequest_length > 0:
 		print("questing...")
 		
@@ -67,6 +82,7 @@ func append_room_to(room = null, rscn_to_be_added = null) -> bool:
 		potential_room = room_scenes[randi_range(0, room_scenes.size()-1)].instantiate()
 	else:
 		potential_room  = rscn_to_be_added
+		print("custom room:", rscn_to_be_added)
 	
 	print("onto the next..")
 	
@@ -90,6 +106,8 @@ func append_room_to(room = null, rscn_to_be_added = null) -> bool:
 	open_doorways.shuffle()
 	
 	#check every open, and potential doorway for compatability. 
+	
+	
 	for od in open_doorways.size():
 		for pd in potential_doorways.size():
 			$Debug.global_position = open_doorways[od].global_position
@@ -99,11 +117,13 @@ func append_room_to(room = null, rscn_to_be_added = null) -> bool:
 			if are_connectors_compatible(open_doorways[od], potential_doorways[pd]):
 				if await kiss_connectors(room, potential_room, open_doorways[od], potential_doorways[pd]):
 					print("done!")
-					return true
+					break
 				else:
 					print("X")
 			else:
 				print("incompatible")
+				#if all else fails...
+				await append_room_to(completed_rooms.pick_random())
 	#bless up
 	
 	# TODO: Should this return true?
@@ -184,7 +204,7 @@ func does_room_fit(room, connector, ref_connector):
 
 
 #i hate this. it will have to do.
-	# made it nicer for you
+# made it nicer for you
 func are_connectors_compatible(con_a, con_b):
 	var result: bool = false
 	
@@ -192,7 +212,12 @@ func are_connectors_compatible(con_a, con_b):
 		(con_a.right && con_b.left) || \
 		(con_a.up && con_b.down) || \
 		(con_a.down && con_b.up):
-			result = true
+			
+				for category in con_a.categories:
+					if con_b.categories.has(category):
+						result = true
+	
+
 	
 	return result
 

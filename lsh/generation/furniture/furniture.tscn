@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://86liqhq16bsx"]
+[gd_scene load_steps=9 format=3 uid="uid://86liqhq16bsx"]
 
 [ext_resource type="Script" uid="uid://bnlvowmwy3e7o" path="res://generation/furniture/furniture.gd" id="1_5la1i"]
 [ext_resource type="AudioStream" uid="uid://bn8jlkjbjmsue" path="res://generation/furniture/lootopen.mp3" id="2_ktr17"]
+[ext_resource type="Resource" uid="uid://dnbni6nnr5t35" path="res://generation/furniture/furniturefiles/chair.tres" id="2_q7yxo"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7ww7b"]
 size = Vector2(15, 15)
@@ -27,6 +28,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="Furniture" type="StaticBody2D"]
 texture_filter = 1
 script = ExtResource("1_5la1i")
+furniture_reference = ExtResource("2_q7yxo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_7ww7b")

@@ -1,12 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxbseoit5c0a8"]
+[gd_scene load_steps=19 format=3 uid="uid://cxbseoit5c0a8"]
 
 [ext_resource type="Script" uid="uid://cqmp80drs6eo4" path="res://drunk_umd_student.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://de2oy8i03jfkc" path="res://9e7e6a795a38ffa95345b0f3e41446a3.jpg" id="2_epypp"]
 [ext_resource type="PackedScene" uid="uid://b7ibbe4kysc2j" path="res://gui.tscn" id="3_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://cwxqstvjy1xnq" path="res://assets/player/Player.png" id="4_hqtel"]
+[ext_resource type="Shader" uid="uid://begwxca5xya52" path="res://fogofwar.gdshader" id="5_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://bgq48inkuxhxt" path="res://assets/BLACK.png" id="6_1jxqw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
-radius = 6.0827627
+radius = 8.062258
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 34.0
@@ -79,6 +81,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dw050"]
+shader = ExtResource("5_2hs0m")
+
 [node name="Drunk UMD Student" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_0e48y")
 
@@ -118,6 +123,14 @@ scale = Vector2(0.185, 0.185)
 sprite_frames = SubResource("SpriteFrames_b26j0")
 animation = &"walk"
 frame_progress = 0.7204313
+
+[node name="Fog Of War" type="Sprite2D" parent="."]
+light_mask = 2
+z_index = 25
+material = SubResource("ShaderMaterial_dw050")
+position = Vector2(-53, -63)
+scale = Vector2(91.714294, 79.24961)
+texture = ExtResource("6_1jxqw")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

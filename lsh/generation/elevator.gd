@@ -1,3 +1,4 @@
+@tool
 extends Room
 
 func _ready() -> void:

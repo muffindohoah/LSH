@@ -14,7 +14,12 @@ class_name Room extends Area2D
 @export var connector_distances : Dictionary = {}
 
 func _ready() -> void:
+	connect("body_entered", conflicting_door_entered)
 	update_preview(true)
+
+func conflicting_door_entered(body):
+	if body is Door:
+		body.queue_free()
 
 func update_preview(new_value) -> void:
 	update_data = false

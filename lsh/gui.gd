@@ -1,7 +1,7 @@
 extends Control
 
 @onready var sprint_meter: ProgressBar = $ProgressBar
-@onready var inventory_texture: HBoxContainer = $HBoxContainer/PanelContainer/TextureRect
+@onready var inventory_texture: TextureRect = $HBoxContainer/PanelContainer/TextureRect
 
 func _init() -> void:
 	Utils.GUI = self
