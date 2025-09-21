@@ -188,7 +188,7 @@ func does_room_fit(room, connector, ref_connector):
 func are_connectors_compatible(con_a, con_b):
 	var result: bool = false
 	
-	if (con_a.left && con_b.right) || \
+	if  (con_a.left && con_b.right) || \
 		(con_a.right && con_b.left) || \
 		(con_a.up && con_b.down) || \
 		(con_a.down && con_b.up):
@@ -199,7 +199,7 @@ func are_connectors_compatible(con_a, con_b):
 
 #returns scenes in directory
 func dir_contents(path):
-	var scene_loads = []	
+	var scene_loads = []
 	var dir = DirAccess.open(path)
 	
 	if dir:

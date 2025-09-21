@@ -1,18 +1,21 @@
 extends CharacterBody2D
 
 const Friction: float = 0.8
-var speed = 16
+const ChasingSpeed: int = 18
+const RoamingSpeed: int = 10
+
+var speed: int = RoamingSpeed
 
 @onready var vision_ray: RayCast2D = $RayCast2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var chase_timer: Timer = $Timer
 @onready var last_seen: Vector2 = global_position
 
-var target
-var target_vision = false
-var next_point
-var ignore_nav = false
-var direction
+var target: Node2D
+var target_vision: bool = false
+var next_point: Vector2
+var ignore_nav: bool = false
+var direction: Vector2
 
 var chasing: 		bool = false
 var searching: 		bool = false
@@ -51,12 +54,18 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	return
 
 
-func __handle_traveling() -> void:
+func __movement_helper(doFriction: bool) -> void:
 	next_point = nav_agent.get_next_path_position()
 	direction = (next_point - global_position).normalized()
 	velocity += direction * speed
-	velocity.x *= Friction
-	velocity.y *= Friction
+	if(doFriction):
+		velocity.x *= Friction
+		velocity.y *= Friction
+		
+	return
+
+func __handle_traveling() -> void:
+	__movement_helper(true)
 	move_and_slide()
 	if nav_agent.is_navigation_finished():
 		traveling = false
@@ -64,20 +73,19 @@ func __handle_traveling() -> void:
 
 func __handle_targeting() -> void:
 	vision_ray.set_target_position(vision_ray.to_local(target.global_position))
-		
+
 	if vision_ray.get_collider() == target and !Utils.PLAYER.is_hidden:
 		nav_agent.set_target_position(last_seen)
 		chasing = true
 		target_vision = true
 		last_seen = target.global_position
-		next_point = nav_agent.get_next_path_position()
-		direction = (next_point - global_position).normalized()
-		velocity += direction * speed
+		__movement_helper(false)
 		searching = false
 		
 		if nav_agent.is_navigation_finished() and !vision_ray.get_collider() == target:
 			target_vision = false
 			#start_searching()
+			# TODO: Why is this commented out?
 	return
 
 func __handle_searching() -> void:
@@ -88,10 +96,10 @@ func __handle_searching() -> void:
 
 	if nav_agent.is_navigation_finished():
 		nav_agent.set_target_position(position + Vector2(randi_range(search_range,-search_range),randi_range(search_range,-search_range)))
-		search_iterations+=1
+		search_iterations += 1
 
 	if search_iterations == 1:
-		pass
+		pass # TODO: What is this for? Was there going to be some behavior here?
 	return
 
 func _physics_process(delta: float) -> void:
@@ -112,17 +120,13 @@ func _physics_process(delta: float) -> void:
 			nav_agent.set_target_position(position + Vector2(randi_range(roam_range,-roam_range),randi_range(roam_range,-roam_range)))
 	
 	if chasing:
-		speed = 18
+		speed = ChasingSpeed
 		modulate.r = 0
 	else:
-		speed = 10
+		speed = RoamingSpeed
 		modulate.r = 100
 	
-	next_point = nav_agent.get_next_path_position()
-	direction = (next_point - global_position).normalized()
-	velocity += direction * speed
-	velocity.x *= Friction
-	velocity.y *= Friction
+	__movement_helper(true)
 	move_and_slide()
 	return
 

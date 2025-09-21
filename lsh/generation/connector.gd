@@ -5,4 +5,4 @@ extends Node2D
 @export var up:bool
 @export var down:bool
 
-var taken
+var taken: bool

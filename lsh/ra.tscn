@@ -18,7 +18,7 @@ radius = 18.0
 
 [sub_resource type="Gradient" id="Gradient_ctws7"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.6927711)
+offsets = PackedFloat32Array(0, 0.692771)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ctws7"]
@@ -78,7 +78,7 @@ volume_db = -25.25
 one_shot = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(-2.2658412, -1.3700434)
+position = Vector2(-2.26584, -1.37004)
 blend_mode = 2
 range_item_cull_mask = 2
 shadow_enabled = true

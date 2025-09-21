@@ -4,7 +4,7 @@ var pissed: bool = false: set = set_piss
 var can_piss: bool = false
 
 func _ready() -> void:
-	# TODO: magic number
+	# TODO: magic numbert
 	await get_tree().create_timer(0.8).timeout
 	can_piss = true
 
