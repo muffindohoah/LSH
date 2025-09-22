@@ -27,7 +27,7 @@ func interact():
 	if is_open:
 		target_rotation = 0.0
 	
-	elif Utils.PLAYER.position.y > self.position.y:
+	elif Utils.PLAYER.global_position.y > self.global_position.y:
 		target_rotation -= force
 	
 	else:

@@ -1,13 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://86liqhq16bsx"]
+[gd_scene load_steps=11 format=3 uid="uid://86liqhq16bsx"]
 
 [ext_resource type="Script" uid="uid://bnlvowmwy3e7o" path="res://generation/furniture/furniture.gd" id="1_5la1i"]
 [ext_resource type="AudioStream" uid="uid://bn8jlkjbjmsue" path="res://generation/furniture/lootopen.mp3" id="2_ktr17"]
 [ext_resource type="Resource" uid="uid://dnbni6nnr5t35" path="res://generation/furniture/furniturefiles/chair.tres" id="2_q7yxo"]
+[ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="3_kgjck"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7ww7b"]
-size = Vector2(15, 15)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1khpd"]
+atlas = ExtResource("3_kgjck")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax67e"]
+atlas = SubResource("AtlasTexture_1khpd")
+region = Rect2(5, 136, 22, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqn78"]
+size = Vector2(21, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktr17"]
 radius = 2.236068
@@ -31,7 +37,7 @@ script = ExtResource("1_5la1i")
 furniture_reference = ExtResource("2_q7yxo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_7ww7b")
+texture = SubResource("AtlasTexture_ax67e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hqn78")
@@ -45,6 +51,7 @@ stream = ExtResource("2_ktr17")
 shape = SubResource("CircleShape2D_ktr17")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+enabled = false
 blend_mode = 2
 range_item_cull_mask = 2
 shadow_enabled = true
