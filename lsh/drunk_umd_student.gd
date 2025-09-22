@@ -24,7 +24,10 @@ var accel: int = 3
 # fuck forcing the player to constantly get beers; with one inventory slot 
 # this disincentivises holding other items + forces constant rotation of the one item. this does not allow tact. 
 var intoxication: int = 0
-var stamina: int = 100
+var fov:float = 0.25: 
+	set(value): 
+		$PointLight2D.texture_scale = fov
+var stamina: float = 50.0
 
 var can_move: bool = true
 var is_moving: bool = false
@@ -37,6 +40,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	await get_tree().create_timer(_ready__timeout_).timeout
+	$PointLight2D.texture_scale = fov
 
 func _physics_process(delta: float):
 	status_effects(delta)
@@ -45,14 +49,14 @@ func _physics_process(delta: float):
 	
 	if !(Utils.GUI.sprint_meter == null):
 		Utils.GUI.sprint_meter.value = stamina
-		
+	
 	items(delta)
 	move_and_slide()
 
 func status_effects(delta: float):
 	current_max_speed -= (intoxication * intox_speed_debuf)
 	if intoxication > 0:
-		intoxication -= intox_falloff_rate * delta
+		intoxication -= intox_falloff_rate
 	print("Current intox: " + String.num_int64(intoxication))
 
 func canSprint() -> bool:
@@ -63,11 +67,11 @@ func movement(delta: float):
 	if Input.is_action_pressed("sprint") and canSprint():
 		stamina -= stamina_falloff_rate
 		current_max_speed = sprint_max_speed
-	
 	else:
 		if stamina < max_stamina:
 			stamina += stamina_regen_rate
 		current_max_speed = walk_max_speed
+
 	
 	if can_move:
 		input_dir.x = 0
@@ -90,13 +94,13 @@ func movement(delta: float):
 		
 		elif input_dir == Vector2(0,0):
 			is_moving = false
-			current_speed = 0.0
+			current_speed = 0
 			# TODO: Is it a good idea or not to make this friction-based instead of just stopping on
 			# a dime?
 			# friction based is better. i dont remember why it is the way it is.
 		
 		elif current_speed > current_max_speed:
-			current_speed -= (accel * delta)
+			current_speed -= (accel)
 		
 		if is_moving:
 			$AnimatedSprite2D.play("walk")
