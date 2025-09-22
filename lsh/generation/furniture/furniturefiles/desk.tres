@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Furniture" load_steps=5 format=3 uid="uid://cqs2ynryfisrr"]
+[gd_resource type="Resource" script_class="Furniture" load_steps=5 format=3 uid="uid://bn7571bw27ptd"]
 
 [ext_resource type="Script" uid="uid://durncaglur0o2" path="res://generation/furniture/furnitureclass.gd" id="1_houio"]
 [ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="1_kslg6"]

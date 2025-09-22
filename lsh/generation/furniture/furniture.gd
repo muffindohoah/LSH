@@ -21,6 +21,8 @@ func update_from_reference() -> void:
 	if furniture_reference.emits_light:
 		$PointLight2D.enabled = true
 		$PointLight2D.texture_scale = furniture_reference.light_size
+	else:
+		$PointLight2D.enabled = false
 	
 	return
 
