@@ -1,11 +1,13 @@
 extends AnimatableBody2D
 
+const READY_TIMEOUT: float = 0.8
+
 var pissed: bool = false: set = set_piss
 var can_piss: bool = false
 
+
 func _ready() -> void:
-	# TODO: magic numbert
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(READY_TIMEOUT).timeout
 	can_piss = true
 
 func _physics_process(delta: float) -> void:

@@ -10,9 +10,9 @@ func get_lootation():
 	print(weights, items)
 	return items[rng.rand_weighted(weights)]
 
-func items2rarities(itemsarray):
-	var ret_array = []
-	for item in itemsarray:
+func items2rarities(itemsarray: Array[Item]):
+	var ret_array: Array[Item] = []
+	for item: Item in itemsarray:
 		ret_array.append(rarities[rarities.keys()[item.rarity]])
 	return ret_array
 
@@ -20,19 +20,22 @@ func dir_contents(path):
 	var scene_loads = []
 	var dir = DirAccess.open(path)
 	
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		
-		while file_name != "":
-			if dir.current_is_dir():
-				print("Found directory: " + file_name)
-			else:
-				if file_name.get_extension() == "tres":
-					var full_path = path.path_join(file_name)
-					scene_loads.append(load(full_path))
-			file_name = dir.get_next()
-	else:
+	if !dir:
 		print("An error occurred when trying to access the path.")
-
+		return null
+		
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+		
+	while file_name != "":
+		if dir.current_is_dir():
+			print("Found directory: " + file_name)
+		else:
+			if file_name.get_extension() == "tres":
+				var full_path = path.path_join(file_name)
+				scene_loads.append(load(full_path))
+		file_name = dir.get_next()
+	
 	return scene_loads
+	# TODO: This is the second time I've seen this function nearly word for word. Extract it into a
+	# separate function shared across files

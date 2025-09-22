@@ -1,5 +1,5 @@
-extends CharacterBody2D
 class_name Door
+extends CharacterBody2D
 
 const force: int = 90
 const weight: float = 0.3

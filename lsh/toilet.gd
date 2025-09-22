@@ -1,6 +1,8 @@
 extends StaticBody2D
 
-var health: int = 3: set = set_health
+const STARTING_HEALTH: int = 3
+
+var health: int = STARTING_HEALTH: set = set_health
 var in_use: bool = false
 
 func set_health(value):

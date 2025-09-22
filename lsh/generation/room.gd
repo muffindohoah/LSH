@@ -1,9 +1,11 @@
 class_name clock extends Area2D
 
+const Connector = preload("res://generation/connector.gd")
+
 @onready var bounding_collision = $Bounds
 @onready var connector_holder = $Connectors
 
-var connectors
+var connectors: Array[Connector]
 var bounds: Vector2 = Vector2(4,4)
 var bounds_offset: Vector2
 

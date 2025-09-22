@@ -15,4 +15,7 @@ script = ExtResource("1_uyua3")
 name = "Chair"
 base_texture = SubResource("AtlasTexture_ax67e")
 collision_vector = Vector2(21, 12)
+openable = false
+emits_light = false
+light_size = 0.5
 metadata/_custom_type_script = "uid://durncaglur0o2"

@@ -4,20 +4,19 @@ extends Node2D
 @onready var completed_rooms = []
 @onready var roomcoll_area: Area2D = $Area2D
 
-# TODO: make this a constant asap. this will be changed as the game progresses? 
 @export var dungeon_length: int = 3
 
 @export_category("Sidequests")
 @export var sidequest_length: int = 3
 @export var sidequest: SideQuest
 
-var last_generated_room = null
+var last_generated_room: Room = null
 
-const _DOES_ROOM_FIT__TIMER_TIMEOUT_: float = 0.03
+const _does_room_fit__timeout: float = 0.03
 
 func _ready() -> void:
 	# TODO: Not sure if any of this is necessary. randomize is ran on project start, and seeds aren't useful without a seed input
-	# this will be called several times as we regenerate the level. seeds are 'good practice'. its unneccessary though yeah.
+		# this will be called several times as we regenerate the level. seeds are 'good practice'. its unneccessary though yeah.
 	randomize()
 	var random_seed: int = randi()
 	$Label.text = "Seed: " + str(random_seed)
@@ -59,6 +58,9 @@ func generate():
 		print("questing...")
 		
 		#shuffle, then pick a random room to start branching path.
+		# TODO: Does this need to be a deep dupe or can it be shallow? More importantly, does it
+			# really matter the order in which the rooms in "completed_rooms" sit? If not, there's
+			# no point in doing a duplication 
 		var sidequest_branch_room = completed_rooms.duplicate_deep()
 		sidequest_branch_room.shuffle()
 		sidequest_branch_room = sidequest_branch_room[0]
@@ -75,14 +77,18 @@ func generate():
 	print("that's a wrap.")
 
 
-func append_room_to(room = null, rscn_to_be_added = null) -> bool:
+func append_room_to(room: Room = null, rscn_to_be_added = null) -> bool:
 	#if there is a custom rscn, try to append that. if there is not, use random.
-	var potential_room
-	if rscn_to_be_added == null:
-		potential_room = room_scenes[randi_range(0, room_scenes.size()-1)].instantiate()
-	else:
+	var potential_room: Room
+	
+	if rscn_to_be_added != null:
 		potential_room  = rscn_to_be_added
 		print("custom room:", rscn_to_be_added)
+	else:
+		potential_room = room_scenes[randi_range(0, room_scenes.size()-1)].instantiate()
+	# TODO: Style/Readibility note: It's generally easier to read code that only switches in case
+	# a condition is satisified. So instead of testing for null and doing the default thing, check
+	# for not null and do the special thing, then do the default thing
 	
 	print("onto the next..")
 	
@@ -98,16 +104,14 @@ func append_room_to(room = null, rscn_to_be_added = null) -> bool:
 		return true
 	
 	#kiss connectors
-	var open_doorways = room.connectors
-	var potential_doorways = potential_room.connectors
+	var open_doorways: Array[Connector] = room.connectors
+	var potential_doorways: Array[Connector] = potential_room.connectors
 	
 	#paths lol xd random
 	potential_doorways.shuffle()
 	open_doorways.shuffle()
 	
 	#check every open, and potential doorway for compatability. 
-	
-	
 	for od in open_doorways.size():
 		for pd in potential_doorways.size():
 			$Debug.global_position = open_doorways[od].global_position
@@ -170,8 +174,8 @@ func has_overlapping_rooms(area:Area2D, exception) -> bool:
 	return false
 
 
-func does_room_fit(room, connector, ref_connector):
-	var offset = room.bounds_offset
+func does_room_fit(room: Room, connector: Connector, ref_connector):
+	var offset: Vector2 = room.bounds_offset
 	var roomcoll_shape = roomcoll_area.get_child(0)
 	roomcoll_shape.shape.size = room.bounds
 	
@@ -186,7 +190,6 @@ func does_room_fit(room, connector, ref_connector):
 	var checking_offset = 3
 	if ref_connector.up:
 		roomcoll_area.global_position.y += checking_offset
-		
 	if ref_connector.down:
 		roomcoll_area.global_position.y -= checking_offset
 	if ref_connector.left:
@@ -194,52 +197,50 @@ func does_room_fit(room, connector, ref_connector):
 	if ref_connector.right:
 		roomcoll_area.global_position.x -= checking_offset
 
-
-	await get_tree().create_timer(_DOES_ROOM_FIT__TIMER_TIMEOUT_).timeout
+	await get_tree().create_timer(_does_room_fit__timeout).timeout
 	
 	if has_overlapping_rooms(roomcoll_area, connector.get_parent().get_parent()):
 		return false
-	else:
-		return true
+	return true
 
 
 #i hate this. it will have to do.
 # made it nicer for you
-func are_connectors_compatible(con_a, con_b):
+func are_connectors_compatible(con_a: Connector, con_b: Connector):
 	var result: bool = false
 	
 	if  (con_a.left && con_b.right) || \
 		(con_a.right && con_b.left) || \
 		(con_a.up && con_b.down) || \
 		(con_a.down && con_b.up):
-			
-				for category in con_a.categories:
-					if con_b.categories.has(category):
-						result = true
-	
-
+			for category in con_a.categories:
+				if con_b.categories.has(category):
+					result = true
 	
 	return result
 
 
 #returns scenes in directory
-func dir_contents(path):
-	var scene_loads = []
-	var dir = DirAccess.open(path)
+func dir_contents(path: String):
+	var scene_loads: Array = []
+	var dir: DirAccess = DirAccess.open(path)
 	
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		
-		while file_name != "":
-			if dir.current_is_dir():
-				print("Found directory: " + file_name)
-			else:
-				if file_name.get_extension() == "tscn":
-					var full_path = path.path_join(file_name)
-					scene_loads.append(load(full_path))
-			file_name = dir.get_next()
-	else:
+	if !dir:
 		print("An error occurred when trying to access the path.")
+		return null
 
+	dir.list_dir_begin()
+	var file_name: String = dir.get_next()
+	
+	while file_name != "":
+		if dir.current_is_dir():
+			print("Found directory: " + file_name)
+			
+		else:
+			if file_name.get_extension() == "tscn":
+				var full_path = path.path_join(file_name)
+				scene_loads.append(load(full_path))
+		
+		file_name = dir.get_next()
+	
 	return scene_loads

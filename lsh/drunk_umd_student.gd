@@ -1,82 +1,99 @@
 extends CharacterBody2D
 
-var walk_max_speed = 150
-var sprint_max_speed = 220
-var current_max_speed = 150
-var current_speed = 0
-var accel = 3
-var intoxication = 0
+const _ready__timeout_ = 0.3
 
-var max_stamina = 100
-var stamina = 100
+# TODO: Play with these values until they feel nice, then make them const
+@export var intox_speed_debuf: int = 20
+@export var intox_falloff_rate: float = 0.1
+@export var intox_flip_control_threshold: int = 30
+@export var stamina_sprint_threshold: float = 0.5
+@export var stamina_falloff_rate: float = 0.5
+@export var stamina_regen_rate: float = 0.2
 
-var can_move = true
-var can_sprint = true
-var is_moving = false
-var is_hidden = false
+@export var walk_max_speed: int = 150
+@export var sprint_max_speed: int = 220
+@export var max_stamina: int = 100
 
-var held_item:Item
+var current_max_speed: int = 150
+var current_speed: int = 0
+var accel: int = 3
+
+# TODO: Shouldn't this be at 50 or something so we don't kill the player immediately 
+# on starting the game? Or have we ditched the "must be intoxicated to not go into shock from the
+# pain of the lost arm" mechanic?
+var intoxication: int = 0
+var stamina: int = 100
+
+var can_move: bool = true
+var is_moving: bool = false
+var is_hidden: bool = false
+
+var held_item: Item
 
 func _init() -> void:
 	Utils.PLAYER = self
 
 func _ready() -> void:
-	await get_tree().create_timer(0.3).timeout
-	
+	await get_tree().create_timer(_ready__timeout_).timeout
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	status_effects(delta)
 	movement(delta)
 	interact(delta)
+	
 	if !(Utils.GUI.sprint_meter == null):
 		Utils.GUI.sprint_meter.value = stamina
+		
 	items(delta)
 	move_and_slide()
 
-func status_effects(d):
-	current_max_speed -= (intoxication*20)
+func status_effects(delta: float):
+	current_max_speed -= (intoxication * intox_speed_debuf)
 	if intoxication > 0:
-		intoxication -= 0.1*d
-	print(intoxication)
+		intoxication -= intox_falloff_rate * delta
+	print("Current intox: " + String.num_int64(intoxication))
 
-func movement(d):
-	var input_dir:Vector2 = Vector2(0,0)
-	if Input.is_action_pressed("sprint") and can_sprint and stamina > 0.4:
-		stamina -= 0.5
+func canSprint() -> bool:
+	return (stamina >= stamina_sprint_threshold)
+
+func movement(delta: float):
+	var input_dir: Vector2 = Vector2(0, 0)
+	if Input.is_action_pressed("sprint") and canSprint():
+		stamina -= stamina_falloff_rate
 		current_max_speed = sprint_max_speed
-		if stamina < 0.5:
-			can_sprint = false
+	
 	else:
 		if stamina < max_stamina:
-			stamina += 0.2
+			stamina += stamina_regen_rate
 		current_max_speed = walk_max_speed
-	if can_sprint == false and stamina >= max_stamina:
-		can_sprint = true
 	
 	if can_move:
+		input_dir.x = 0
+		input_dir.y = 0
 		if Input.is_action_pressed("right"):
-				input_dir.x = 1
+				input_dir.x += 1
 		if Input.is_action_pressed("left"):
-				input_dir.x = -1
+				input_dir.x += -1
 		if Input.is_action_pressed("up"):
-				input_dir.y = -1
+				input_dir.y += -1
 		if Input.is_action_pressed("down"):
-				input_dir.y = 1
-		if Input.is_action_pressed("right") and Input.is_action_pressed("left"):
-			input_dir.x = 0
-		if Input.is_action_pressed("up") and Input.is_action_pressed("down"):
-			input_dir.y = 0
+				input_dir.y += 1
 		
-		
+		# Interesting. Getting drunk usually makes people slower
 		current_max_speed += (intoxication)
+		
 		if input_dir != Vector2(0,0) and current_speed < current_max_speed:
-			current_speed += accel 
+			current_speed += (accel * delta)
 			is_moving = true
+		
 		elif input_dir == Vector2(0,0):
 			is_moving = false
 			current_speed = 0.0
+			# TODO: Is it a good idea or not to make this friction-based instead of just stopping on
+			# a dime?
+		
 		elif current_speed > current_max_speed:
-			current_speed -= accel 
+			current_speed -= (accel * delta)
 		
 		if is_moving:
 			$AnimatedSprite2D.play("walk")
@@ -90,17 +107,17 @@ func movement(d):
 		else:
 			$AnimatedSprite2D.pause()
 		
-		if intoxication > 30:
+		if intoxication > intox_flip_control_threshold:
 			input_dir *= -1
 		
-		
-		
 		velocity = input_dir.normalized() * current_speed
+	
+	return
 
 
-var interactables_in_ranges = []
+var interactables_in_ranges: Array = []
 
-func interact(d):
+func interact(delta: float):
 	if Input.is_action_just_pressed("interact"):
 		if interactables_in_ranges.size() > 0:
 			$AnimatedSprite2D.play("interact")
@@ -125,7 +142,7 @@ func stop_hiding():
 	is_hidden = false
 	visible = true
 
-func items(d):
+func items(delta: float):
 	if Input.is_action_just_pressed("itemuse") && held_item && held_item.can_be_used:
 		if held_item.use_scene:
 			var item_use_scene = held_item.use_scene.instantiate()
@@ -135,6 +152,7 @@ func items(d):
 			drop_item()
 
 func drop_item():
+	# TODO: Is this supposed to put the item in the game-world? Currently it just deletes its existence
 	held_item = null
 	Utils.GUI.update_ui()
 
