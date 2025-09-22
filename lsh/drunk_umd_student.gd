@@ -25,7 +25,6 @@ var accel: int = 3
 # this disincentivises holding other items + forces constant rotation of the one item. this does not allow tact. 
 var intoxication: int = 0
 var stamina: int = 100
-var candle_light = 0
 
 var can_move: bool = true
 var is_moving: bool = false
