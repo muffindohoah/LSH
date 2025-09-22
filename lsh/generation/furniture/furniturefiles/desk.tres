@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Furniture" load_steps=5 format=3 uid="uid://cqs2ynryfisrr"]
+
+[ext_resource type="Script" uid="uid://durncaglur0o2" path="res://generation/furniture/furnitureclass.gd" id="1_houio"]
+[ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="1_kslg6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s1vy"]
+atlas = ExtResource("1_kslg6")
+region = Rect2(0, 256, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kslg6"]
+atlas = ExtResource("1_kslg6")
+region = Rect2(32, 256, 32, 24)
+
+[resource]
+script = ExtResource("1_houio")
+name = "desk"
+base_texture = SubResource("AtlasTexture_8s1vy")
+openable = true
+opened_texture = SubResource("AtlasTexture_kslg6")
+metadata/_custom_type_script = "uid://durncaglur0o2"
