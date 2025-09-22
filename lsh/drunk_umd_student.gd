@@ -26,7 +26,9 @@ var accel: int = 3
 var intoxication: int = 0
 var fov:float = 0.25: 
 	set(value): 
+		fov = value
 		$PointLight2D.texture_scale = fov
+
 var stamina: float = 50.0
 
 var can_move: bool = true
