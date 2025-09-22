@@ -21,6 +21,8 @@ var accel: int = 3
 # TODO: Shouldn't this be at 50 or something so we don't kill the player immediately 
 # on starting the game? Or have we ditched the "must be intoxicated to not go into shock from the
 # pain of the lost arm" mechanic?
+# fuck forcing the player to constantly get beers; with one inventory slot 
+# this disincentivises holding other items + forces constant rotation of the one item. this does not allow tact. 
 var intoxication: int = 0
 var stamina: int = 100
 
@@ -83,7 +85,7 @@ func movement(delta: float):
 		current_max_speed += (intoxication)
 		
 		if input_dir != Vector2(0,0) and current_speed < current_max_speed:
-			current_speed += (accel * delta)
+			current_speed += (accel)
 			is_moving = true
 		
 		elif input_dir == Vector2(0,0):
@@ -91,6 +93,7 @@ func movement(delta: float):
 			current_speed = 0.0
 			# TODO: Is it a good idea or not to make this friction-based instead of just stopping on
 			# a dime?
+			# friction based is better. i dont remember why it is the way it is.
 		
 		elif current_speed > current_max_speed:
 			current_speed -= (accel * delta)
@@ -110,10 +113,10 @@ func movement(delta: float):
 		if intoxication > intox_flip_control_threshold:
 			input_dir *= -1
 		
+		print(current_speed)
 		velocity = input_dir.normalized() * current_speed
 	
 	return
-
 
 var interactables_in_ranges: Array = []
 

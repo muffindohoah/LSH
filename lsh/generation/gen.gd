@@ -36,7 +36,12 @@ func generate():
 	for i in range(dungeon_length):
 		if i == 0:
 			append_room_to(last_generated_room, load("res://generation/elevator.tscn").instantiate())
-		await append_room_to(last_generated_room)
+		
+		if await append_room_to(last_generated_room):
+			pass
+		else:
+			print("deadend. realign snake")
+			await append_room_to(completed_rooms.pick_random())
 	
 	
 	#create random shit to make the map feel natural. this does not have to make logical sense.
@@ -104,8 +109,8 @@ func append_room_to(room: Room = null, rscn_to_be_added = null) -> bool:
 		return true
 	
 	#kiss connectors
-	var open_doorways: Array[Connector] = room.connectors
-	var potential_doorways: Array[Connector] = potential_room.connectors
+	var open_doorways: Array = room.connectors
+	var potential_doorways: Array = potential_room.connectors
 	
 	#paths lol xd random
 	potential_doorways.shuffle()
@@ -121,17 +126,16 @@ func append_room_to(room: Room = null, rscn_to_be_added = null) -> bool:
 			if are_connectors_compatible(open_doorways[od], potential_doorways[pd]):
 				if await kiss_connectors(room, potential_room, open_doorways[od], potential_doorways[pd]):
 					print("done!")
-					break
+					return true
 				else:
 					print("X")
 			else:
 				print("incompatible")
 				#if all else fails...
-				await append_room_to(completed_rooms.pick_random())
 	#bless up
 	
 	# TODO: Should this return true?
-	return true
+	return false
 
 
 #cant find better naming convention... now kith
