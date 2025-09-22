@@ -1,6 +1,6 @@
 extends Node
 
-const rarities = {"Common" : 0.60, "Uncommon" : 0.40, "Rare":0.28, "Unique" : 0.1}
+const rarities: Dictionary[String, float] = {"Common" : 0.60, "Uncommon" : 0.40, "Rare":0.28, "Unique" : 0.1}
 
 func get_lootation():
 	var rng = RandomNumberGenerator.new()
@@ -10,9 +10,9 @@ func get_lootation():
 	print(weights, items)
 	return items[rng.rand_weighted(weights)]
 
-func items2rarities(itemsarray: Array[Item]):
-	var ret_array: Array[Item] = []
-	for item: Item in itemsarray:
+func items2rarities(itemsarray):
+	var ret_array = []
+	for item in itemsarray:
 		ret_array.append(rarities[rarities.keys()[item.rarity]])
 	return ret_array
 
