@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwxqstvjy1xnq"
-path="res://.godot/imported/Player.png-ede8f1f0c7927795965f2af4848ff6d6.ctex"
+uid="uid://c172bfcbgexm5"
+path="res://.godot/imported/toiletseatgrounded.png-00eb05a915f5640d6bc67fe3b1fe842d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Player.png"
-dest_files=["res://.godot/imported/Player.png-ede8f1f0c7927795965f2af4848ff6d6.ctex"]
+source_file="res://assets/items/toiletseatgrounded.png"
+dest_files=["res://.godot/imported/toiletseatgrounded.png-00eb05a915f5640d6bc67fe3b1fe842d.ctex"]
 
 [params]
 

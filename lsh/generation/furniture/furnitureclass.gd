@@ -4,6 +4,8 @@ class_name Furniture
 
 @export var name: String
 @export var base_texture: Texture
+@export var use_random_texture: bool
+@export var random_textures: Array
 @export var collision_vector: Vector2
 @export var openable: bool
 @export var opened_texture: Texture
@@ -12,4 +14,4 @@ class_name Furniture
 @export var light_size: float = 0.5
 
 # TODO: Finish dev and remove the exports
-# the exports make no compromise nimwad. these are for creating resources in editor.
+# the exports make no compromise nimwad. these are for creating/editing resources quickly in editor.

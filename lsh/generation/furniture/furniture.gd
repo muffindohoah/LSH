@@ -8,11 +8,16 @@ const _drop_loot__posmult: int = 20
 var opened: bool = false
 
 func _ready() -> void:
+	await get_tree().create_timer(0.1).timeout
 	update_from_reference()
-	return
 
 func update_from_reference() -> void:
-	$Sprite2D.texture = furniture_reference.base_texture
+	if furniture_reference.use_random_texture:
+		$Sprite2D.texture = furniture_reference.random_textures.pick_random()
+	else:
+		$Sprite2D.texture = furniture_reference.base_texture
+	
+	$CollisionShape2D.shape = RectangleShape2D.new()
 	$CollisionShape2D.shape.size = furniture_reference.collision_vector
 	
 	if furniture_reference.openable:
@@ -37,8 +42,10 @@ func interact() -> void:
 func drop_loot(loot) -> void:
 	var loot_scene = load("res://items/droppeditem.tscn").instantiate()
 	loot_scene.item_reference = loot
-	loot_scene.global_position = self.global_position 
 	get_parent().add_child(loot_scene)
-	
-	var direction_vector: Vector2 = Vector2(cos(rotation), sin(rotation))
-	loot_scene.position += direction_vector * _drop_loot__posmult
+	loot_scene.global_position = self.global_position 
+	if furniture_reference.item_drop_pos:
+		loot_scene.global_position += furniture_reference.item_drop_pos
+	else:
+		var direction_vector: Vector2 = Vector2(cos(rotation), sin(rotation))
+		loot_scene.global_position += direction_vector * _drop_loot__posmult
