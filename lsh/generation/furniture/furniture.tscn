@@ -12,7 +12,7 @@ atlas = SubResource("AtlasTexture_1khpd")
 region = Rect2(5, 136, 22, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqn78"]
-size = Vector2(30, 20)
+size = Vector2(22, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktr17"]
 radius = 2.236068
