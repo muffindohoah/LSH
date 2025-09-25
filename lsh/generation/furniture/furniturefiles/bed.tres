@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Furniture" load_steps=7 format=3 uid="uid://crb1uqkisk3y"]
+
+[ext_resource type="Script" uid="uid://durncaglur0o2" path="res://generation/furniture/furnitureclass.gd" id="1_fi8tf"]
+[ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="1_qpwuf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko670"]
+atlas = ExtResource("1_qpwuf")
+region = Rect2(0, 194, 64, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpwuf"]
+atlas = ExtResource("1_qpwuf")
+region = Rect2(0, 162, 64, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8a16"]
+atlas = ExtResource("1_qpwuf")
+region = Rect2(64, 162, 64, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntila"]
+atlas = ExtResource("1_qpwuf")
+region = Rect2(0, 194, 64, 28)
+
+[resource]
+script = ExtResource("1_fi8tf")
+name = "Bed"
+base_texture = SubResource("AtlasTexture_ko670")
+use_random_texture = true
+random_textures = [SubResource("AtlasTexture_qpwuf"), SubResource("AtlasTexture_h8a16"), SubResource("AtlasTexture_ntila")]
+collision_vector = Vector2(64, 28)
+metadata/_custom_type_script = "uid://durncaglur0o2"

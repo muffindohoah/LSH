@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d2dq5vxm2ep2j"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://d2dq5vxm2ep2j"]
 
 [ext_resource type="Script" uid="uid://mnymuefnfn1u" path="res://items/itemclass.gd" id="1_tidev"]
 [ext_resource type="Texture2D" uid="uid://ddg1gsv2gsvwg" path="res://assets/items/toiletseat.png" id="1_wbt0s"]
+[ext_resource type="Texture2D" uid="uid://c172bfcbgexm5" path="res://assets/items/toiletseatgrounded.png" id="1_xbj8c"]
 
 [resource]
 script = ExtResource("1_tidev")
 name = "Toilet Cover"
 inventory_texture = ExtResource("1_wbt0s")
-dropped_texture = ExtResource("1_wbt0s")
+dropped_texture = ExtResource("1_xbj8c")
 can_be_used = false
 metadata/_custom_type_script = "uid://mnymuefnfn1u"
