@@ -87,7 +87,7 @@ func movement(delta: float):
 		if Input.is_action_pressed("down"):
 				input_dir.y += 1
 		
-		# Interesting. Getting drunk usually makes people slower
+		# Interesting. Getting drunk usually makes people slower. i dont know man.
 		current_max_speed += (intoxication)
 		
 		if input_dir != Vector2(0,0) and current_speed < current_max_speed:
@@ -99,7 +99,7 @@ func movement(delta: float):
 			current_speed = 0
 			# TODO: Is it a good idea or not to make this friction-based instead of just stopping on
 			# a dime?
-			# friction based is better. i dont remember why it is the way it is.
+			# friction based is better. i dont remember why it is the way it is. dont fix it.
 		
 		elif current_speed > current_max_speed:
 			current_speed -= (accel)

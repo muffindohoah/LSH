@@ -4,10 +4,11 @@ extends Room
 var door_is_open = false
 
 func _init() -> void:
-	Utils.ELEVATOR = self
+	pass
 
 func _ready() -> void:
 	super._ready()
+	Utils.ELEVATOR = self
 	Utils.GENERATIONCOMPLETE.connect(open_door)
 
 func toggle_door():

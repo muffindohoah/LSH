@@ -43,13 +43,14 @@ func wipe_map():
 			last_generated_room = room
 
 func generate():
-	
+	randomize()
 	#this will create the main snake. at the end we will place the objective.
 	for i in range(dungeon_length):
 		if i == 0 && last_generated_room == null:
 			append_room_to(last_generated_room, load("res://generation/elevator.tscn").instantiate())
-		else:
-			append_room_to(Utils.ELEVATOR)
+		elif i == 0:
+			get_tree().reload_current_scene()
+			return
 		
 		if await append_room_to(last_generated_room):
 			pass
