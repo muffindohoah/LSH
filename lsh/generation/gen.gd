@@ -30,8 +30,7 @@ func _ready() -> void:
 	
 	room_scenes = dir_contents("res://generation/rooms/")
 	room_scenes.shuffle()
-	generate()
-	
+	Utils.load_level(Utils.FLOORLEVEL)
 
 
 func wipe_map():
@@ -60,7 +59,7 @@ func generate():
 	
 	
 	#create random shit to make the map feel natural. this does not have to make logical sense.
-	for i in randi_range(0, completed_rooms.size()):
+	for i in completed_rooms.size():
 		await append_room_to(completed_rooms.pick_random())
 	
 	#fill gaps
@@ -69,9 +68,11 @@ func generate():
 		for connector in completed_room.connectors:
 			if !connector.taken:
 				if connector.left or connector.right:
-					append_room_to(completed_room, load("res://generation/blockoffs/blockoffhoriz.tscn").instantiate())
+					#append_room_to(completed_room, load("res://generation/blockoffs/blockoffhoriz.tscn").instantiate())
+					pass
 				elif connector.up or connector.down:
-					append_room_to(completed_room, load("res://generation/blockoffs/blockoffvert.tscn").instantiate())
+					pass
+					#append_room_to(completed_room, load("res://generation/blockoffs/blockoffvert.tscn").instantiate())
 	
 	#this will create the 'sidequest'. this will not be used. no time. 
 	if sidequest_length > 0:
