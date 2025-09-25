@@ -9,9 +9,14 @@ var opened: bool = false
 
 func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
+
 	update_from_reference()
 
 func update_from_reference() -> void:
+	if !furniture_reference:
+		return
+	
+	
 	if furniture_reference.use_random_texture:
 		$Sprite2D.texture = furniture_reference.random_textures.pick_random()
 	else:

@@ -35,12 +35,17 @@ var can_move: bool = true
 var is_moving: bool = false
 var is_hidden: bool = false
 
-var held_item: Item
+var held_item: Item: 
+	set(value): 
+		held_item = value
+		Utils.HELDITEM = value
 
 func _init() -> void:
 	Utils.PLAYER = self
 
 func _ready() -> void:
+	held_item = Utils.HELDITEM
+	Utils.GUI.update_ui()
 	await get_tree().create_timer(_ready__timeout_).timeout
 	$PointLight2D.texture_scale = fov
 
