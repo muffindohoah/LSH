@@ -18,6 +18,8 @@ func interact():
 		if in_use:
 			Utils.PLAYER.stop_hiding()
 		in_use = !in_use 
+	else:
+		drop_loot(Loot.get_lootation())
 
 func hit(by):
 	health -= 1
@@ -27,3 +29,12 @@ func hit(by):
 func _exit_tree():
 	if in_use:
 		Utils.PLAYER.stop_hiding()
+
+func drop_loot(loot) -> void:
+	var loot_scene = load("res://items/droppeditem.tscn").instantiate()
+	loot_scene.item_reference = loot
+	get_parent().add_child(loot_scene)
+	loot_scene.global_position = self.global_position 
+	
+	var direction_vector: Vector2 = Vector2(cos(rotation), sin(rotation))
+	loot_scene.global_position += direction_vector * 10
