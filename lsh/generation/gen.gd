@@ -14,6 +14,9 @@ var last_generated_room: Room = null
 
 const _does_room_fit__timeout: float = 0.03
 
+func _init() -> void:
+	Utils.GENERATION = self
+
 func _ready() -> void:
 	# TODO: Not sure if any of this is necessary. randomize is ran on project start, and seeds aren't useful without a seed input
 		# this will be called several times as we regenerate the level. seeds are 'good practice'. its unneccessary though yeah.
@@ -28,20 +31,31 @@ func _ready() -> void:
 	room_scenes = dir_contents("res://generation/rooms/")
 	room_scenes.shuffle()
 	generate()
+	
 
+
+func wipe_map():
+	for room in completed_rooms:
+		if !room.is_in_group("elevator"):
+			completed_rooms.erase(room)
+			room.queue_free()
+		else:
+			last_generated_room = room
 
 func generate():
 	
 	#this will create the main snake. at the end we will place the objective.
 	for i in range(dungeon_length):
-		if i == 0:
+		if i == 0 && last_generated_room == null:
 			append_room_to(last_generated_room, load("res://generation/elevator.tscn").instantiate())
+		else:
+			append_room_to(Utils.ELEVATOR)
 		
 		if await append_room_to(last_generated_room):
 			pass
 		else:
 			print("deadend. realign snake")
-			await append_room_to(completed_rooms.pick_random())
+			last_generated_room = completed_rooms.pick_random()
 	
 	
 	#create random shit to make the map feel natural. this does not have to make logical sense.
@@ -78,7 +92,7 @@ func generate():
 		#if sidequest is set correctly, spawn corresponding room.
 		if sidequest:
 			await append_room_to(last_generated_room, sidequest.quest_room)
-	
+	Utils.GENERATIONCOMPLETE.emit()
 	print("that's a wrap.")
 
 
