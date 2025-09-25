@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Furniture" load_steps=4 format=3 uid="uid://0qjeuexni3wk"]
+
+[ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="1_egere"]
+[ext_resource type="Script" uid="uid://durncaglur0o2" path="res://generation/furniture/furnitureclass.gd" id="1_orhcc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnegr"]
+atlas = ExtResource("1_egere")
+region = Rect2(0, 96, 64, 32)
+
+[resource]
+script = ExtResource("1_orhcc")
+base_texture = SubResource("AtlasTexture_xnegr")
+metadata/_custom_type_script = "uid://durncaglur0o2"
