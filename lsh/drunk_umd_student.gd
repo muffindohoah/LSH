@@ -142,8 +142,8 @@ var prehidden_position:Vector2
 func hide_inside(body):
 	velocity = Vector2(0,0)
 	$CollisionShape2D.disabled = true
-	prehidden_position = position
-	position = body.position
+	prehidden_position = global_position
+	global_position = body.global_position
 	can_move = false
 	is_hidden = true
 	visible = false
@@ -151,7 +151,7 @@ func hide_inside(body):
 
 func stop_hiding():
 	$CollisionShape2D.disabled = false
-	position = prehidden_position
+	global_position = prehidden_position
 	can_move = true
 	is_hidden = false
 	visible = true

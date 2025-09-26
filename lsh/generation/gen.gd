@@ -59,8 +59,13 @@ func generate():
 	
 	
 	#create random shit to make the map feel natural. this does not have to make logical sense.
-	for i in completed_rooms.size():
+	for i in completed_rooms.size()*2:
 		await append_room_to(completed_rooms.pick_random())
+	
+	var ra_scene = load("res://ra.tscn").instantiate()
+	ra_scene.global_position = completed_rooms.pick_random().global_position
+	add_child(ra_scene)
+	
 	
 	#fill gaps
 	var completed_rooms_duplicate = completed_rooms.duplicate(true)

@@ -4,6 +4,7 @@ const STARTING_HEALTH: int = 3
 
 var health: int = STARTING_HEALTH: set = set_health
 var in_use: bool = false
+var is_open:bool = false
 
 func set_health(value):
 	health = value
@@ -19,7 +20,9 @@ func interact():
 			Utils.PLAYER.stop_hiding()
 		in_use = !in_use 
 	else:
-		drop_loot(Loot.get_lootation())
+		if !is_open:
+			drop_loot(Loot.get_lootation())
+			is_open = true
 
 func hit(by):
 	health -= 1
@@ -37,4 +40,5 @@ func drop_loot(loot) -> void:
 	loot_scene.global_position = self.global_position 
 	
 	var direction_vector: Vector2 = Vector2(cos(rotation), sin(rotation))
-	loot_scene.global_position += direction_vector * 10
+	loot_scene.global_position += direction_vector * 1
+	

@@ -7,7 +7,7 @@ var can_piss: bool = false
 
 
 func _ready() -> void:
-	if randi_range(1, 10) == 1:
+	if randi_range(1, 10) != 1:
 		queue_free()
 	
 	await get_tree().create_timer(READY_TIMEOUT).timeout

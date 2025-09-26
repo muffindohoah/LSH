@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=27 format=3 uid="uid://c13imbptut0kv"]
+[gd_resource type="TileSet" load_steps=32 format=3 uid="uid://c13imbptut0kv"]
 
 [ext_resource type="Texture2D" uid="uid://bua2elqaaoyqm" path="res://assets/rooms/onenightlshspritesheet-Sheet.png" id="1_ig2d3"]
 
@@ -19,6 +19,27 @@ vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
 agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_aouoy"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_utujl"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2c02v"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, -13.066342, 2.0129027, -12.929939, 2.1553307, 16, -2.1553326, 16, -2.1553307, -13.080633, -16, -12.93199)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xryyj"]
+polygon = PackedVector2Array(-2.2383156, -16, 1.9655399, -16, 2.2383156, 16, -2.2383156, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c7vgh"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, -13.066342, -16, -12.93199)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ig2d3"]
 polygon = PackedVector2Array(8.12508, 16, 16, 16, 16, -16, 8.096872, -16)
@@ -144,12 +165,17 @@ texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 1:1/0/z_index = 1
 1:1/0/terrain_set = 0
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_aouoy")
 2:1/0 = 0
 2:1/0/z_index = 1
 2:1/0/terrain_set = 0
+2:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_2c02v")
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -13.06386, 2.060265, -13.072025, 2.0710983, 16, -1.7524719, 16, -2.1549897, -13.072025, -16, -12.74523)
 3:1/0 = 0
 3:1/0/z_index = 1
 3:1/0/terrain_set = 0
+3:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_c7vgh")
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -13.06386, -16, -12.74523)
 4:1/0 = 0
 4:1/0/z_index = 1
 4:1/0/terrain_set = 0
@@ -200,9 +226,12 @@ texture_region_size = Vector2i(32, 32)
 1:2/0 = 0
 1:2/0/z_index = 1
 1:2/0/terrain_set = 0
+1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_utujl")
 2:2/0 = 0
 2:2/0/z_index = 1
 2:2/0/terrain_set = 0
+2:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_xryyj")
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.9655399, -16, 2.0710983, 16, -1.7524719, 16, -2.0711021, -16)
 3:2/0 = 0
 3:2/0/z_index = 1
 3:2/0/terrain_set = 0
